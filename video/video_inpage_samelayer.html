@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>页面内同层</title>
+	
+	<style type="text/css"> 
+		#div_test{
+			margin-top: -100px;
+			position:absolute;
+			z-index:0;
+			color:red;
+		}
+	</style> 
+</head>
+<body>
+<h2> 页面内同层 </h2>
+<p>说明：页面内同层是X5内核特殊的视频播放形态，视频源由X5内核视频组件负责解码，X5内核负责合成上屏。允许html元素叠加于视频前方。</p>
+<video width="300" height="300" controls src="movie/movie.mp4">
+</video> 
+
+<div id="div_test">div元素显示于视频层级上方。<div>
+</body>
+</html>
