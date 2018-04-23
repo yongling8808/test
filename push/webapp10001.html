@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>APPID10001 订阅页面</title>
+</head>
+<body onload="onload()">
+	<h2>APPID10001 订阅页面 </h2>
+  <br>
+	<p id='subcriptionstatu'>1、当前用户订阅状态：未订阅</p>
+  <p>2、请求订阅</p>
+  <button id="pushSubscribe">订阅</button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p>---------------------------------</p>
+	<button id="pushchang">PUSH环境切换</button>
+	
+   <script>
+   
+    function onload() {
+      window.x5corepush.isSubscribed(JSON.stringify({"appid":"10001","callback":"isSubscribedCallBack","callbackid":1}));
+      pushSubscribe.disabled = "disabled";
+    }
+    
+    //{"subscription":, "callbackid":}
+    function isSubscribedCallBack(str) {
+      console.log("isSubscribedCallBack="+str);
+      alert("isSubscribedCallBack:"+str);
+      var json = JSON.parse(str);
+      if(json.subscription == 1) {
+        subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
+        pushSubscribe.disabled = "disabled";
+      } else {
+        subcriptionstatu.innerText = '1、当前用户订阅状态：未订阅';
+        pushSubscribe.disabled = "enable";
+      }
+    }
+	
+    //{"result":, "message":, "callbackid":}
+		function subscribeRequestCallBack(str) {
+			console.log("subscribeCallBack="+str);
+			var json = JSON.parse(str);
+			console.log("subscribeCallBack-callbackid="+json.callbackid+"|result="+json.result+"|message="+json.message);
+			alert("subscribeCallBack:"+str);
+      if(json.result == 0) {
+        subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
+        pushSubscribe.disabled = "disabled";
+      }
+		}
+	
+		pushSubscribe.addEventListener('click', function (evt) {
+			var str = {"appid":"10001", "callback":"subscribeRequestCallBack", "callbackid":1};
+			window.x5corepush.subscribeRequest(JSON.stringify(str));
+		})
+		
+		pushchang.addEventListener('click', function (evt) {
+			window.location = "qb://pushchange";
+		})
+   </script>
+</body>
+</html>
