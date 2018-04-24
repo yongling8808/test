@@ -26,7 +26,7 @@
    
     function onload() {
       window.x5corepush.isSubscribed(JSON.stringify({"appid":"10001","callback":"isSubscribedCallBack","callbackid":1}));
-      pushSubscribe.disabled = "disabled";
+      pushSubscribe.disabled = true;
     }
     
     //{"subscription":, "callbackid":}
@@ -36,10 +36,10 @@
       var json = JSON.parse(str);
       if(json.subscription == 1) {
         subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
-        pushSubscribe.disabled = "disabled";
+        pushSubscribe.disabled = true;
       } else {
         subcriptionstatu.innerText = '1、当前用户订阅状态：未订阅';
-        pushSubscribe.disabled = "enable";
+        pushSubscribe.disabled = false;
       }
     }
 	
@@ -51,7 +51,7 @@
 			alert("subscribeCallBack:"+str);
       if(json.result == 0) {
         subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
-        pushSubscribe.disabled = "disabled";
+        pushSubscribe.disabled = true;
       }
 		}
 	
