@@ -32,7 +32,7 @@
     //{"subscription":, "callbackid":}
     function isSubscribedCallBack(str) {
       console.log("isSubscribedCallBack="+str);
-      alert("isSubscribedCallBack:"+str);
+      //alert("isSubscribedCallBack:"+str);
       var json = JSON.parse(str);
       if(json.subscription == 1) {
         subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
@@ -48,7 +48,7 @@
 			console.log("subscribeCallBack="+str);
 			var json = JSON.parse(str);
 			console.log("subscribeCallBack-callbackid="+json.callbackid+"|result="+json.result+"|message="+json.message);
-			alert("subscribeCallBack:"+str);
+			//alert("subscribeCallBack:"+str);
       if(json.result == 0) {
         subcriptionstatu.innerText = '1、当前用户订阅状态：已订阅';
         pushSubscribe.disabled = true;
