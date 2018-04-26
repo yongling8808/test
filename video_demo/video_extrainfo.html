@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>x5mediaextrainfo扩展事件</title>
+  
+</head>
+
+<body>
+	<h2> x5mediaextrainfo扩展事件 </h2>
+	<p>说明：e.what==700表示收到一次视频解码能力的提示，extra表示视频相对于音频（音频一般很准时）延时的具体值，单位ms。</p>
+	<video id="video" src="movie/movie.mp4" controls="controls" height="300" width="300"></video>
+ 
+	<script type = "text/javascript">
+		var video = document.getElementById('video');
+		video.addEventListener("x5mediaextrainfo", function(e){
+			alert("receive x5mediaextrainfo event = e.what =" + e.what + ", extra = " + e.extra);
+		});
+	</script>
+          
+</body>
+</html>
