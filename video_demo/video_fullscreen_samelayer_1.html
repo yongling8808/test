@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>同层全屏</title>
+	
+	<style type="text/css"> 
+		#div_test{
+			margin-top: -100px;
+			position:absolute;
+			z-index:0;
+			color:red;
+		}
+	</style> 
+</head>
+<body>
+<h2> 同层全屏 </h2>
+<p>说明：同层全屏是X5内核特殊的视频播放形态，只全屏展示video区域，并允许video区域的视频交互，html元素叠加于视频前方。</p>
+<video id="test_video" controls src="movie/movie1.mp4"  x5-video-player-type="h5">
+</video> 
+
+<div id="div_test">div元素显示于视频层级上方。</div>
+
+<script type = "text/javascript">
+	test_video.style.width = screen.width + "px";
+	test_video.style.height = screen.height + "px";
+</script>
+</body>
+</html>
