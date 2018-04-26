@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>进入/退出全屏事件</title>
+</head>
+
+<body>
+
+	<h2> 进入/退出全屏事件 </h2>
+    <video id="video" controls preload src="movie/movie.mp4" height="300" width="300"></video>
+	<script type="text/javascript">
+		var video = document.getElementById('video');
+		
+		video.addEventListener("x5videoexitfullscreen", function(){
+			alert("player exitfullscreen");
+		})
+
+
+		video.addEventListener("x5videoenterfullscreen", function(){
+			alert("player enterfullscreen");
+		})
+	</script>
+</body>
+</html>
