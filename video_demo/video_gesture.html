@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>视频播放触发条件</title>
+</head>
+
+<body>
+	<h2> 视频播放触发条件 </h2>
+    <video id="video" controls preload src="movie/movie.mp4" height="300" width="300"></video>
+    <h3>1.touchstart</h3>
+	<p>说明：touch自chromeM55版本之后从手势事件中移除；视频首次播放无法在touch start中触发。</p>
+    <button id="videoPlayBtn1">play video</button>
+    <h3>2.touchend</h3>
+	<p>说明：touch end跟click手势事件存在一定的时间重叠，视频的首次播放可能被触发，但不可靠。</p>
+    <button id="videoPlayBtn2">play video</button>
+    <h3>3.click</h3>
+	<p>说明：视频的首次播放可以在click中触发。</p>
+    <button id="videoPlayBtn3">play video</button>
+    <h3>4.timer</h3>
+	<p>说明：视频的首次播放无法在timer响应中触发。</p>
+    <button id="videoPlayBtn4">play video</button>
+    <h3>5.fetch promis</h3>
+	<p>说明：视频的首次播放无法在promise回调中触发。</p>
+    <button id="videoPlayBtn5">play video</button>
+
+    <script>
+        window.onload = function () {
+            var videoBtn1 = document.getElementById('videoPlayBtn1');
+            var videoBtn2 = document.getElementById('videoPlayBtn2');
+            var videoBtn3 = document.getElementById('videoPlayBtn3');
+            var videoBtn4 = document.getElementById('videoPlayBtn4');
+            var videoBtn5 = document.getElementById('videoPlayBtn5');
+
+            var video = document.getElementById('video');
+
+            videoBtn1.addEventListener('touchstart', function (evt) {
+                video.play();
+            })
+
+            videoBtn2.addEventListener('touchend', function (evt) {
+                video.play();
+            })
+
+            videoBtn3.addEventListener('click', function (evt) {
+                video.play();
+            })
+
+            videoBtn4.addEventListener('touchstart', function (evt) {
+                setTimeout(function(){
+                    video.play();
+                },1000); 
+            })
+
+            videoBtn5.addEventListener('touchstart', function (evt) {
+                fetch('./video_gesture.html')
+                    .then(function(response) {
+                        video.play();
+                    })
+                    .catch(function(myBlob) {
+                        video.play();
+                    });
+            })
+        }
+    </script>
+</body>
+
+</html>
