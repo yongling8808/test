@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>微信同层</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding:0;
+    }
+    video{
+        object-fit: contain !important;
+    }
+
+    .rotates{
+        transform: rotate(-90deg) translateX(-100%);
+        -webkit-transform: rotate(-90deg) translateX(-100%);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+
+    #screen-info{
+        color: white;
+        background: black;
+    }
+</style>
+<body>
+    <video id="test_video"
+           src="https://common.qupai.me/player/qupai.mp4"
+           x5-video-player-type="h5"
+           x5-video-player-fullscreen="true"
+           controls="controls"
+           x5-video-orientation="portrait"></video>
+
+<div style="z-index: 55">
+    <div style="margin-top: 20px; position: absolute; bottom: 50px; z-index: 9999">
+        <input type="text" id="test-input">
+        <button value="点击" id="test-btn">点击</button>
+        <div id="screen-info"></div>
+    </div>
+</div>
+
+<script>
+    var screenInfo = document.getElementById('screen-info')
+    var btn = document.getElementById('test-btn')
+
+    var showScreenInfo =  function() {
+        var infoStr = ''
+        infoStr += '--screenWidth :' + window.screen.width
+        infoStr += '--screenHeight: ' + window.screen.height + '</br>'
+        infoStr += '--screenAvailWidth :' + window.screen.availWidth
+        infoStr += '--screenAvailHeight :' + window.screen.availHeight + '</br>'
+
+        infoStr += '--clientWidth :' + document.documentElement.clientWidth
+        infoStr += '--clientHeight: ' + document.documentElement.clientHeight + '</br>'
+        screenInfo.innerHTML = infoStr
+    }
+    showScreenInfo()
+
+    var videoElem = document.getElementsByTagName('video')[0]
+
+
+    function enterFullScreen () {
+        console.log('enterFullScreen');
+    }
+
+    function exitFullScreen () {
+        console.log('exitFullScreen')
+    }
+
+    function onResize () {
+        console.log('onResize');
+        // setTimeout(function(){
+        //     console.log('onResize');
+        //     videoElem.style.width = window.screen.width + "px";
+        //     videoElem.style.height = window.screen.height  + "px";
+        //     setTimeout(function() {
+        //         console.log('onResize');
+        //         videoElem.style.width = window.screen.width - 100 + "px";
+        //         videoElem.style.height = window.screen.height - 100  + "px";
+        //         setTimeout(function() {
+        //             console.log('onResize');
+        //             videoElem.style.width = window.screen.width + "px";
+        //             videoElem.style.height = window.screen.height  + "px";
+        //         }, 1000)
+        //     }, 1000)
+        // }, 1000)
+        videoElem.style.width = window.screen.width + "px";
+        videoElem.style.height = window.screen.height  + "px";
+
+    }
+
+    window.addEventListener('resize', onResize, false)
+    videoElem.addEventListener('x5videoenterfullscreen', enterFullScreen, false)
+    videoElem.addEventListener('x5videoexitfullscreen', exitFullScreen, false)
+
+    window.onbeforeunload = function() {
+        window.removeEventListener('resize', onResize, false)
+        videoElem.removeEventListener('x5videoenterfullscreen', enterFullScreen, false)
+        videoElem.removeEventListener('x5videoexitfullscreen', exitFullScreen, false)
+    }
+
+    var rotated = false
+    btn.onclick = function(){
+        if(!rotated){
+            document.getElementsByTagName('video')[0].setAttribute('x5-video-orientation', 'landscape');
+        }else {
+            document.getElementsByTagName('video')[0].setAttribute('x5-video-orientation', 'portrait')
+        }
+        rotated = !rotated
+    }
+
+</script>
+</body>
+</html>
