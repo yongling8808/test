@@ -1,0 +1,21 @@
+<html>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+    <title>浏览器信息</title>
+    <script>
+      function browser_init() {
+        var ele = document.getElementById("browser_ua");
+        ele.textContent = navigator.userAgent;
+      }
+    </script>
+  </head>
+  <body onload="browser_init()">
+    <div>
+      <h3>1.浏览器UA：</h3>
+      <a id="browser_ua"></a>
+      <br>
+    </div>
+  </body>
+</html>
+
