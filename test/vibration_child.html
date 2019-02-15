@@ -10,9 +10,10 @@
 <a>Vibration! </a>
 </br>
 <button onclick="vibrate()">click</button>
+<button onclick="long_vibrate()">long_click</button>
 <script type="text/javascript">  
-function vibrate(){  
-  window.navigator.vibrate([200, 100, 200]);
+function long_vibrate(){  
+  window.navigator.vibrate([1000, 1000, 1000]);
 }  
 remainTime();  
 </script>  
