@@ -15,7 +15,7 @@
           portal.style.opacity = 0;
           logOut("portal Element loading...");
           portal.src = url;
-          portal.addEventListener('load', () => {
+          portal.addEventListener('onload', () => {
             logOut("portal loaded");
           });
           let div = document.getElementById("disp");
