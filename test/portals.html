@@ -9,17 +9,18 @@
       let portal;
       const url = 'https://portal.3g.qq.com/';
       function createPortal() {
-        logOut("creating 3gQQ Portal Element!");
-        portal = document.createElement('portal');
-        portal.style = 'opacity:0';
-        logOut("portal Element loading...");
-        portal.src = url;
-        let div = document.getElementById("disp");
-        div.appendChild(portal);
-        portal.addEventListener('load', () => {
-          console.log('portal loaded');
-          logOut("portal loaded");
-        });
+        setTimeout(() => {
+          logOut("creating 3gQQ Portal Element!");
+          portal = document.createElement('portal');
+          portal.style.opacity = 0;
+          logOut("portal Element loading...");
+          portal.src = url;
+          portal.addEventListener('load', () => {
+            logOut("portal loaded");
+          });
+          let div = document.getElementById("disp");
+          div.appendChild(portal);
+        }, 1000);
       }
 
       function activate() {
