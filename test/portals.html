@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>portals test!</title>
+    <script>
+      let portal;
+      const url = 'https://portal.3g.qq.com/';
+      function createPortal() {
+        logOut("creating 3gQQ Portal Element!");
+        portal = document.createElement('portal');
+        portal.style = 'opacity:0';
+        logOut("portal Element loading...");
+        portal.src = url;
+        let div = document.getElementById("disp");
+        div.appendChild(portal);
+        portal.addEventListener('load', () => {
+          console.log('portal loaded');
+          logOut("portal loaded");
+        });
+      }
+
+      function activate() {
+        portal.activate();
+      }
+
+      function logOut(log) {
+        var a = document.getElementById("prompt_content");
+        a.innerHTML += log;
+        a.innerHTML += '</br>';
+      }
+    </script>
+</head>
+<body onload="createPortal()">
+  <h3>Portals Test</h3>
+  <input type="button" onclick="activate()" value="Activate" style="width:100px;height:30px;"><br>
+  <a id="prompt_content"></a>
+  <div id='disp'></div>
+</body>
+</html>
+
