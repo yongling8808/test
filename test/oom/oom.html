@@ -5,6 +5,8 @@
         <title>OOM TEST</title>
     </head>
     <script>
+        var oom_array;
+
         function createImages() {
             for (var i=2000;i>0;i--) {
                 var img = document.createElement("img");
@@ -13,13 +15,21 @@
                 container.appendChild(img);
             }
         }
+
+        function createLongString() {
+            oom_array = new Array();
+            for (var i=0;i<200000000;i++) {
+                oom_array[i] = "abcdefghijklmnopqrstuvwxyz";
+            }
+        }
     </script>
 <body>
     <h3>1. create 1000 images element with each size 640 KB</h3>
     <input type="button" value="creat images" onclick="createImages()">
+    <h3>2. create Long String</h3>
+    <input type="button" value="create long string" onclick="createLongString()">
     <br>
     <div id="imgContainer">
-        <img src="./img/1.jpg">
     </div>
 </body>
 </html>
