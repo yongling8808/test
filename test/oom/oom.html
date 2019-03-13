@@ -24,12 +24,12 @@
         }
 
         function createIframes() {
-            for (var i=500;i>0;i--) {
+            setInterval(function() {
                 var iframe = document.createElement("iframe");
                 iframe.src = "https://www.qq.com";
                 var container = document.getElementById("iframeContainer");
                 container.appendChild(iframe);
-            }
+            }, 1000);
         }
     </script>
 <body>
