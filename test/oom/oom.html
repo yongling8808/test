@@ -22,14 +22,25 @@
                 oom_array[i] = "abcdefghijklmnopqrstuvwxyz";
             }
         }
+
+        function createIframes() {
+            for (var i=500;i>0;i--) {
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://www.qq.com";
+                var container = document.getElementById("iframeContainer");
+                container.appendChild(iframe);
+            }
+        }
     </script>
 <body>
     <h3>1. create 1000 images element with each size 640 KB</h3>
     <input type="button" value="creat images" onclick="createImages()">
     <h3>2. create Long String</h3>
     <input type="button" value="create long string" onclick="createLongString()">
+    <h3>2. create 500 iframe</h3>
+    <input type="button" value="create iframes" onclick="createIframes()">
     <br>
-    <div id="imgContainer">
-    </div>
+    <div id="imgContainer"></div>
+    <div id="iframeContainer"></div>
 </body>
 </html>
