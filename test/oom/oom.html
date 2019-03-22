@@ -22,13 +22,33 @@
                 oom_array[i] = "abcdefghijklmnopqrstuvwxyz";
             }
         }
-
+        
         function createIframes() {
             setInterval(function() {
                 var iframe = document.createElement("iframe");
                 iframe.src = "https://www.qq.com";
                 var container = document.getElementById("iframeContainer");
                 container.appendChild(iframe);
+            }, 100);
+        }
+
+        var interval_id = 0;
+        var count = 0;
+        var display_iframe_count = 0
+        function create100Iframes () {
+            count = 50;
+            interval_id = self.setInterval(function() {
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://www.qq.com";
+                var container = document.getElementById("iframeContainer");
+                container.appendChild(iframe);
+                count--;
+                display_iframe_count++;
+                var display_iframe = document.getElementById("display_iframe_count");
+                display_iframe.innerText = String(display_iframe_count);
+                if (count <= 0) {
+                    window.clearInterval(interval_id);
+                }
             }, 100);
         }
     </script>
@@ -39,6 +59,11 @@
     <input type="button" value="create long string" onclick="createLongString()">
     <h3>3. create iframe per 100ms</h3>
     <input type="button" value="create iframes" onclick="createIframes()">
+    <br>
+    <h3>4. create 50 iframe per click</h3>
+    <input type="button" value="create iframes" onclick="create100Iframes()">
+    <br>
+    <a>iframe count:</a><a id="display_iframe_count"></a>
     <br>
     <div id="imgContainer"></div>
     <div id="iframeContainer"></div>
