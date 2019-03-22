@@ -36,7 +36,8 @@
         var count = 0;
         var display_iframe_count = 0
         function create100Iframes () {
-            count = 50;
+            window.clearInterval(interval_id);
+            count = 100;
             interval_id = self.setInterval(function() {
                 var iframe = document.createElement("iframe");
                 iframe.src = "https://www.qq.com";
@@ -60,7 +61,7 @@
     <h3>3. create iframe per 100ms</h3>
     <input type="button" value="create iframes" onclick="createIframes()">
     <br>
-    <h3>4. create 50 iframe per click</h3>
+    <h3>4. create 100 iframe per click</h3>
     <input type="button" value="create iframes" onclick="create100Iframes()">
     <br>
     <a>iframe count:</a><a id="display_iframe_count"></a>
