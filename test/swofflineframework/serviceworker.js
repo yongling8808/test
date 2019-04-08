@@ -33,6 +33,9 @@ this.addEventListener('fetch', function(event)  {
         caches.open(OFFLINE_CACHE).then(function(cache) {
           //console.log('load from cache:'+ event.request.url);
           return cache.match(event.request.url);
+        }).then(function(response) {
+          console.log('return response:'+response.status)
+          return response;
         }).catch(function() {
           console.log('match catch...');
           return;
