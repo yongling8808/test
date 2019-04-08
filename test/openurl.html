@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,viewport-fit=cover">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>  
+    html {        
+      background: #fff;    
+    }    
+    .content {        
+      border-top: none;        
+      padding: 28px 16px 20px 16px;        
+      text-align: justify;    
+    }    
+  .section-header {        
+    font-family: PingFangSC-Medium, sans-serif;        
+    font-size: 16px;        
+    color: #242424;        
+    line-height: 16px;        
+    padding: 0;        
+    margin-bottom: 16px;    
+  }    
+  .section-content {        
+    color: #242424 !important;        
+    font-weight: normal !important;        
+    line-height: 28px;        
+    padding: 0;        
+    font-size: 17px;    
+  }    
+  .section-seperator {        
+    height: 0;        
+    border-top: none;        
+    margin-top: 40px;    
+  }    
+  .content-bottom {        
+    position: relative;        
+    font-family: Regular, sans-serif;        
+    font-size: 11px;        
+    line-height: 14px;        
+    color: #8f8f8f;        
+    text-align: center;        
+    background: white;        
+    padding-bottom: 105px;    
+  }    
+  .content-bottom img {        
+    width: 13px;        
+    top: 2px;        
+    position: relative;        
+    margin-right: 5px;    
+  }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://solar.fbcontent.cn/s/9e8a0dc0-AndroidStyle.css">
+  <script src="https://res.imtt.qq.com/sc/camera/conf/jquery.min.js"></script> 
+  <script> 
+    var bigImage = function () {    
+      if (this.naturalWidth > $('body').width()) {        
+        var imgNode = $(this);        
+        imgNode.css('max-width', '100%');        
+        imgNode.css('-webkit-tap-highlight-color', 'transparent');        
+        imgNode.on('click', function () {var url = 'qb://imagereader?url=' + encodeURIComponent(this.src);			
+          window.location.href = url;        
+          });    
+      }};
+      var handleBigImage = function () {    
+        if (this.complete) {        
+          bigImage.bind(this)();    
+        } else {        
+          $(this).on('load', function() {            
+            bigImage.bind(this)();        
+          });    
+        }};
+        function load(){	
+          $('img').each(handleBigImage);	
+        }  
+      </script>
+  </head> 
+  <body onload="load()"> 
+    <div class="content">
+      <div class="section-content"> <div class="section-header question">题目</div> 
+  <div>
+   <img src="http://solar.fbcontent.cn/apolo-image/api/1689cf621508418.jpg" style="max-width: 100%; -webkit-tap-highlight-color: transparent;">
+  </div>
+ </div>  <div class="section-seperator"></div><div class="section-content"> <div class="section-header">答案</div>
+  <div>
+   <img src="http://solar.fbcontent.cn/apolo-image/api/1689cffd2000b8a.jpg" style="max-width: 100%; -webkit-tap-highlight-color: transparent;">
+  </div></body></html>
