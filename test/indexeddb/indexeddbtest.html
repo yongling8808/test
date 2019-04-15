@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">          
+        <script src="./indexdb.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            function init() {
+                var dbParams = new Object();
+                dbParams.db_name = "SISO";
+                dbParams.db_version = "2";
+                dbParams.db_store_name = "Test";
+                dbObject.init(dbParams);
+            }
+ 
+            function Tinsert() {
+                // 填入初始值
+                dbObject.put({ title: "Quarry Memories", author: "Fred", isbn: 123456 }, 1);
+                dbObject.put({ title: "Water Buffaloes", author: "Fred", isbn: 234567 }, 2);
+                dbObject.put({ title: "Bedrock Nights", author: "Barney", isbn: 345678 }, 3);
+            }
+ 
+            function Tselect() {
+                dbObject.select(3);
+            }
+ 
+            function Tupdate() {
+                dbObject.put({ title: "Quarry wu", author: "lex", isbn: 123456 }, 1);
+            }
+ 
+            function Tdelete() {
+                dbObject.delete(3);
+            }
+ 
+            function Tclear() {
+                dbObject.clear();
+            }
+        </script>
+    </head>
+    <body onload=" init() ">
+        <input type="button" value="新增几条数据" onclick=" Tinsert(); "/>
+        <input type="button" value="查找一条记录" onclick=" Tselect(); "/>
+        <input type="button" value="删除一条记录" onclick=" Tdelete(); "/>
+        <input type="button" value="更新一条记录" onclick=" Tupdate(); "/>
+        <input type="button" value="清除所有表数据" onclick=" Tclear(); "/>
+    </body>
+</html>
