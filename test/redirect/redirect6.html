@@ -2,6 +2,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">          
+        <script>
+                function open1() {
+                    location.href="https://m.baidu.com";
+                }
+
+                function open2() {
+                    setTimeout(function(){
+                        location.href="https://m.baidu.com";
+                    },100);
+                }
+
+                function open3() {
+                    setTimeout(function(){
+                        location.href="https://m.baidu.com";
+                    },500);
+                }
+
+                function open4() {
+                    setTimeout(function(){
+                        location.href="https://m.baidu.com";
+                    },1000);
+                }
+            </script>
     </head>
     <body>
         <div class="box">
@@ -10,6 +33,14 @@
             <a href="http://3g.qq.com">3g.qq.com</a>
             <br>
             <a href="http://m.baidu.com">m.baidu.com</a>
+            <br>
+            <input type="button" onclick="open1()" value="立即打开m.baidu.com">
+            <br>
+            <input type="button" onclick="open2()" value="100ms后打开m.baidu.com">
+            <br>
+            <input type="button" onclick="open3()" value="500ms后打开m.baidu.com">
+            <br>
+            <input type="button" onclick="open4()" value="1000ms后打开m.baidu.com">
         </div>
     </body>
 </html>
