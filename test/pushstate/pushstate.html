@@ -7,15 +7,45 @@
 </head>
 <body>
   <script>
+    window.onload = function() {
+      setTimeout(function(){
+        history.pushState({page: 0}, 'title 0', '?page=0');
+        updateCurUrl();
+      },2000);
+      updateCurUrl();
+    }
+
     function pushState() {
       history.pushState({page: 1}, 'title 1', '?page=1');
+      updateCurUrl();
+    }
+
+    function delayPushState() {
+      setTimeout(function(){
+        history.pushState({page: 2}, 'title 1', '?page=2');
+        updateCurUrl();
+      },2000);
     }
 
     window.onpopstate = function (event) {
-    alert('popstate:'+JSON.stringify(event.state));
-  };
+      // alert('popstate:'+JSON.stringify(event.state));
+      updateCurUrl();
+    }
+
+    function updateCurUrl() {
+      document.getElementById('curUrl').innerText=location.href;
+    }
+
   </script>
   <button onclick="pushState()">pushState</button>
+  <br>
+  <br>
+  <br>
+  <button onclick="delayPushState()">delayPushState</button>
+  <br>
+  <br>
+  <br>
+  <a>CurrentUrl:</a><a id='curUrl'></a>
 </body>
 </html>
 
