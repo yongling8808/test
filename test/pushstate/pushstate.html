@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>pushState Test!</title>
+</head>
+<body>
+  <script>
+    function pushState() {
+      history.pushState({page: 1}, 'title 1', '?page=1');
+    }
+
+    window.onpopstate = function (event) {
+    alert('popstate:'+JSON.stringify(event.state));
+  };
+  </script>
+  <button onclick="pushState()">pushState</button>
+</body>
+</html>
+
