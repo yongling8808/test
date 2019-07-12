@@ -42,6 +42,10 @@
                         location.href="https://m.baidu.com";
                     },5000);
                 }
+
+                function open7() {
+                    window.parent.location.href="https://m.baidu.com";
+                }
             </script>
     </head>
     <body>
@@ -67,6 +71,8 @@
             <input type="button" onclick="open6()" value="2000ms后打开m.baidu.com">
             <br>
             <input type="button" onclick="open7()" value="5000ms后打开m.baidu.com">
+            <br>
+            <input type="button" onclick="open8()" value="触发父frame跳转">
         </div>
     </body>
 </html>
