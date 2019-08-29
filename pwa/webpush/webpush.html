@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>WebPush</title>
+</head>
+<body onload="onload()">
+	<h2>WebPush </h2>
+
+  <button id="push" onclick="pushSubscribe()">点击订阅</button>
+  
+
+	
+   <script>
+     function onload() {
+      navigator.serviceWorker.register('sw.js');
+     }
+
+     function pushSubscribe() {
+      navigator.serviceWorker.ready.then(function(register) {
+        return registration.pushManager.getSubscription()
+        .then(async function(subscription) {
+          if (subscription) {
+            return subscription;
+          }
+          //can get from https://web-push-codelab.glitch.me/
+          //Public Key
+          //BLmuQjhted59CSyb_doO9ZZM0o4t-oSzgiVASE0ArA-famv_UpuUoIocd5L5kjYy-Gm_G4iwScIouyi9K6Q83jA
+          //Private Key
+          //QLF9ln8LL88yjHbxcQBo9AjWE4jeDOpmj_WlQ2XASFc
+
+          const convertedVapidKey = urlBase64ToUint8Array('BLmuQjhted59CSyb_doO9ZZM0o4t-oSzgiVASE0ArA-famv_UpuUoIocd5L5kjYy-Gm_G4iwScIouyi9K6Q83jA');
+          
+          return registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: convertedVapidKey
+          })
+        }).then(function(subscribe) {
+          console.log(subscribe)
+        })
+      })
+     }
+
+     function urlBase64ToUint8Array(base64String) {
+      var padding = '='.repeat((4 - base64String.length % 4) % 4);
+      var base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+    
+      var rawData = window.atob(base64);
+      var outputArray = new Uint8Array(rawData.length);
+    
+      for (var i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
+    }
+   </script>
+</body>
+</html>
