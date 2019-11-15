@@ -22,7 +22,6 @@ event.waitUntil(
 this.addEventListener('activate', function(event) {
 });
    
- 
 this.addEventListener('fetch', function(event)  { 
      
    
