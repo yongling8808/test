@@ -20,8 +20,9 @@
       } else if (evt.preloadStatus === 'preload-end') { // 3. preload-end： 预渲染结束
       //document.documentElement.className = ""
       } else if (evt.preloadStatus === 'preload-matched') { // 4. preload-matched：命中预渲染页面
-      document.body.innerHTML += preloadStatusInfo;
+      //document.body.innerHTML += preloadStatusInfo;
       }
+      document.body.innerHTML = preloadStatusInfo;
   });
   </script>
   
