@@ -14,7 +14,7 @@ event.waitUntil(
       return cache.addAll(urlsToPrefetch);
     })
   );
-       
+        
           
 });
          
