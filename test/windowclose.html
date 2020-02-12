@@ -11,12 +11,20 @@
 </br>
 <h2>window open and close</h2>
 <button onclick="exec()">click</button>
+</br>
+<button onclick="setflag()">setFlag</button>
 
 <script type="text/javascript">  
+var flag = true;
 function exec(){  
   var opened = window.open('https://www.qq.com/404/', '_self');
-  opened.opener = null;
-  opened.close();
+  if (flag) {
+    opened.opener = null;
+    opened.close();
+  }
+}
+function setflag() {
+  flag = false;
 }   
 </script>  
 </body>
