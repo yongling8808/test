@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+
+<head>
+
+<script>
+
+function register() {
+
+console.log('serviceworker install...');
+
+  navigator.serviceWorker.register('serviceworker.js').then( function(serviceWorker) {
+
+if(serviceWorker.installing) {
+      console.log('Service worker installing');
+    } else if(serviceWorker.waiting) {
+      console.log('Service worker installed');
+    } else if(serviceWorker.active) {
+      console.log('Service worker active');
+    }
+    console.log(serviceWorker);
+ 
+});
+}
+
+navigator.serviceWorker.addEventListener('message', function(event) {
+  console.log('Received message:'+event.data);
+  alert("This message comes from SW:"+event.data);
+});
+
+function sendMessage() {
+  navigator.serviceWorker.controller.postMessage('hello,sw!');
+}
+
+</script>
+<script src="app.js" type="text/javascript"></script>
+</head>
+
+<body onload="register()">
+<h1>ServiceWork Test!</h1>
+<button onclick="register()">Register</button>
+</br>
+</br>
+</br>
+<image src='snowTroopers.jpg'></image>
+</br>
+</br>
+</br>
+<button onclick="test()">Out Js Test!</button>
+</br>
+</br>
+<h3>timestamp:20180606104700</h3>
+
+<button onclick="sendMessage()">Send a message to sw</button>
+
+</body>
+
+</html>
