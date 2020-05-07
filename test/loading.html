@@ -1,0 +1,49 @@
+<html>
+	<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+  <title>WebViewShell</title>
+  <style>
+            .tloader-loading .ui-loading {
+                font-size: 12px;
+                margin-right: 9px
+            }
+
+            .state-loading .tloader-footer .tloader-loading,.state-refreshing .tloader-symbol .tloader-loading {
+                display: block
+            }
+
+            @keyframes circle {
+                to {
+                    transform: rotate(1turn)
+                }
+            }
+
+            .ui-loading {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 12px;
+                width: 1em;
+                height: 1em;
+                border: 2px solid #9494b6;
+                border-top-color: hsla(0,0%,100%,.4);
+                border-radius: 100%;
+                animation: circle .8s linear infinite
+            }
+
+            #ui-waiting .ui-loading {
+                border: 2px solid #fff;
+                border-top-color: #9494b6
+            }
+
+  </style>
+
+	</head>
+	<body>
+    <h2>Loading</h2>
+      <div class="tloader-loading" compname="">
+        <i class="ui-loading"></i>
+    </div>
+    <h2>end</h2>
+	</body>
+</html>
