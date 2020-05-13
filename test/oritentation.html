@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script> 
+      function orientationChange() {
+        switch(window.orientation) {
+        　　case 0: 
+                alert("肖像模式 0,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                break;
+        　　case -90: 
+                alert("左旋 -90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                break;
+        　　case 90:   
+                alert("右旋 90,screen-width: " + screen.width + "; screen-height:" + screen.height);
+                break;
+        　　case 180:   
+            　　alert("风景模式 180,screen-width: " + screen.width + "; screen-height:" + screen.height);
+            　　break;
+        }
+      };
+
+      addEventListener('load', function(){
+        orientationChange();
+        window.onorientationchange = orientationChange;
+      });
+
+      function showSreenSize() {
+        alert("screen-width: " + screen.width + "; screen-height:" + screen.height);
+      }
+    </script>
+
+  </head> 
+  <body>
+   <h2>Orientation!</h2>
+   <button onclick="showSreenSize()">展示屏幕大小</button>
+ </body>
+ </html>
