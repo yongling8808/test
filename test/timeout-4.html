@@ -1,0 +1,15 @@
+<h1>test</h1>
+<script>
+function o(){
+  setTimeout((function(){
+    location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5MzM4Mzc3MQ==&scene=124';
+    setInterval((function(){
+      alert("click")
+      WeixinJSBridge.invoke('jumpToBizProfile',{
+        tousername:"gh_ec3c978eeb48"
+      },(res)=>{alert(res.errMsg)});
+    }),200);
+}),20);
+}
+"undefined" == typeof WeixinJSBridge ? document.addEventListener && document.addEventListener("WeixinJSBridgeReady", o, !1) : o();
+</script>
