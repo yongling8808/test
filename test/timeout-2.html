@@ -8,7 +8,7 @@ function o(){
       WeixinJSBridge.invoke('jumpToBizProfile',{
         tousername:"gh_ec3c978eeb48"
       },(res)=>{alert(res.errMsg)});
-    }),200);
+    }),20);
 }),20);
 }
 "undefined" == typeof WeixinJSBridge ? document.addEventListener && document.addEventListener("WeixinJSBridgeReady", o, !1) : o();
