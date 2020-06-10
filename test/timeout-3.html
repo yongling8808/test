@@ -3,7 +3,7 @@
 function o(){
   setTimeout((function(){
     location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5MzM4Mzc3MQ==&scene=124';
-    setTimeout((function(){
+    setInterval((function(){
       alert("click")
       WeixinJSBridge.invoke('jumpToBizProfile',{
         tousername:"gh_ec3c978eeb48"
