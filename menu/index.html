@@ -29,11 +29,32 @@
       margin-top: 30;
       display: block;
     }
+
+    #longClickSwitchButton {
+      margin-left: 30;
+    }
+
+    #textinput {
+      margin-left: 45;
+    }
+
   </style>
   <script>
-    function myMenu() {
-      return false;
+
+    var longClickSwitchStatus = true;
+    function longClickSwitch() {
+      if (longClickSwitchStatus) {
+        longClickSwitchStatus = false;
+        document.oncontextmenu = function() { return false;}
+        document.getElementById("longClickSwitchButton").value="点击启用长按";
+      } else {
+        longClickSwitchStatus = true;
+        document.oncontextmenu = null;
+        document.getElementById("longClickSwitchButton").value="点击屏蔽长按";
+      }
     }
+    
+
   </script>
 	</head>
 	<body>
@@ -49,15 +70,28 @@
       <img src="./img/snowTroopers.jpg"></img>
     </div>
 
-  <div class="contentItem" oncontextmenu="myMenu()">
-      <h4>2、非标准长按事件（仅浏览器表现同上）</h4>
-      <p class="litTitle">a、长按下面的空白</p>
-      </br>
-      </br>
-      <p class="litTitle">b、长按下面的文本</p>
-      <p class="paragraph">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。</p>
-      <p class="litTitle">c、长按下面的图片</p>
-      <img src="./img/snowTroopers.jpg"></img>
+    <div class="contentItem">
+      <h4>2、屏蔽长按事件（仅三方支持）</h4>
+      <input id="longClickSwitchButton" type="button" value="点击屏蔽长按" onclick="longClickSwitch()">
     </div>
-	</body>
+
+    <div class="contentItem">
+      <h4>3、指尖搜索</h4>
+      <p class="paragraph">四面八方的朋友（长按四或面可选中'四面八方"）</p>
+      <p class="paragraph">我来自中华人民共和国（长按中或者国会选中'中华人民共和国'）</p>
+    </div>
+
+    <div class="contentItem">
+      <h4>4、文本框选择复制</h4>
+      <p class="litTitle">a、单行输入框</p>
+      <input id="textinput" type="text" value="hello,我的朋友！">
+      <p class="litTitle">b、多行输入框</p>
+      <textarea id="textinput" rows="5" cols="30">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。</textarea>
+    </div>
+
+    <div class="contentItem">
+      <h4>5、禁止选择复制(仅三方支持)</h4>
+      <p class="paragraph" style="user-select: none;">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。</p>
+    </div>
+  </body>
 </html>
