@@ -31,7 +31,7 @@
     }
 
     #longClickSwitchButton {
-      margin-left: 30;
+      margin-left: 45;
     }
 
     #textinput {
@@ -60,7 +60,7 @@
 	<body>
     <h2>长按菜单、指尖搜索及选择复制测试</h2>
     <div class="contentItem">
-      <h4>1、标准长按事件（浏览器及三方表现相同）</h4>
+      <h4>1、长按事件</h4>
       <p class="litTitle">a、长按下面的空白(会就近选择文本)</p>
       </br>
       </br>
@@ -68,41 +68,43 @@
       <p class="paragraph">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。</p>
       <p class="litTitle">c、长按下面的图片（会弹出长按菜单）</p>
       <img src="./img/snowTroopers.jpg"></img>
-    </div>
-
-    <div class="contentItem">
-      <h4>2、屏蔽长按事件（仅三方支持）</h4>
+      <p class="litTitle">d、屏蔽长按事件（<strong style="color: red;">仅三方</strong>下会禁用长按）</p>
       <input id="longClickSwitchButton" type="button" value="点击屏蔽长按" onclick="longClickSwitch()">
     </div>
 
     <div class="contentItem">
-      <h4>3、指尖搜索</h4>
+      <h4>2、指尖搜索</h4>
       <p class="paragraph">四面八方的朋友（长按'四'或'面'可选中'四面八方"）</p>
       <p class="paragraph">我来自中华人民共和国（长按'中'或'国'会选中'中华人民共和国'）</p>
     </div>
 
     <div class="contentItem">
-      <h4>4、文本框选择复制</h4>
-      <p class="litTitle">初次长按或点击输入框会拉起键盘，进入输入模式；再长按时会弹出选择复制菜单</p>
+      <h4>3、输入框选择复制</h4>
+      <p class="litTitle">初次长按或点击输入框会拉起键盘，进入输入模式；再长按时会弹出选择复制菜单；水滴可以被正常拖动，相关菜单可以正常使用</p>
       <p class="litTitle">a、单行输入框</p>
       <input id="textinput" type="text" value="hello,我的朋友！">
       <p class="litTitle">b、多行输入框</p>
       <textarea id="textinput" rows="5" cols="30">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。</textarea>
+      <p class="litTitle">c、输入框全选通知（输入框内容被选择没有全选时会有全选菜单，当点击全选后会隐藏全选菜单，<strong style="color: red;">浏览器</strong>可验证）</p>
+      <p class="litTitle">d、在选择复制状态时切后台、点击手机任务按钮或者进入多窗口，水滴不消失</p>
+      <p class="litTitle">e、网页在双指缩放后，输入框水滴可正常使用</p>
+      <p class="litTitle">f、网页发生前进后退，水滴可正常消失</p>
     </div>
 
     <div class="contentItem">
-      <h4>5、禁止选择复制(仅三方支持)</h4>
-      <p class="paragraph" style="user-select: none;">这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。</p>
+      <h4>4、文本选择复制</h4>
+      <p class="litTitle">a、长按普通文本可进入选择复制</p>
+      <p class="litTitle">b、屏蔽选择复制（<strong style="color: red;">仅三方</strong>下可屏蔽）</p>
+      <p class="paragraph" style="user-select: none;">（该段已屏蔽选择复制）这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。</p>
+      <p class="litTitle">c、全选通知（网页文本在没有全选时会有全选菜单，当点击全选后会隐藏全选菜单）</p>
+      <p class="litTitle">d、在选择复制状态时切后台、点击手机任务按钮或者进入多窗口，水滴不消失</p>
+      <p class="litTitle">e、网页在双指缩放后长按文本水滴可正常使用</p>
+      <p class="litTitle">f、网页发生前进后退，水滴可正常消失</p>
     </div>
 
-    <div class="contentItem">
-      <h4>6、全选通知（仅浏览器）</h4>
-      <p class="litTitle">输入框和网页文本在没有全选时会有全选菜单，当点击全选后会隐藏全选菜单</p>
-    </div>
-
-    <div class="contentItem">
-      <h4>7、页面缩放后可正常选择复制</h4>
-      <p class="litTitle">双指缩放当前页面后长按文本可正常拖动选择水滴</p>
+    <div class="contentItem"></div>
+      <br>
+      <a href="https://xw.qq.com/" style="margin-left: 30;">进入手机腾讯网</a>
     </div>
   </body>
 </html>
