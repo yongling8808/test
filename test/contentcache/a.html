@@ -4,11 +4,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
     <meta name="x5-cache" content="disable">
     <title>A页面</title>
+    <script>
+      function open_win() 
+      {
+        window.open("https://yongling8808.github.io/test/test/contentcache/b.html");
+      }
+    </script>
   </head>
   <body>
     <div>
-      <h3>A页面：不会被ContentCache缓存</h3>
-      <a href="b.html">点击跳转B页面</a>
+      <h3>A页面</h3>
+      <a onclick="open_win()">点击新窗口打开B页面</a>
       <br>
     </div>
   </body>
