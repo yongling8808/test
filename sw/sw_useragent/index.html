@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+  <head>
+    <script>
+      function register() {
+        console.log('serviceworker install...');
+        navigator.serviceWorker.register('serviceworker.js').then( function(serviceWorker) {
+        if(serviceWorker.installing) {
+              console.log('Service worker installing');
+            } else if(serviceWorker.waiting) {
+              console.log('Service worker installed');
+            } else if(serviceWorker.active) {
+              console.log('Service worker active');
+            }
+            console.log(serviceWorker);
+        
+        });
+        var ele1 = document.getElementById("browser_ua");
+        ele1.textContent = navigator.userAgent;
+      }
+
+      navigator.serviceWorker.addEventListener('message', function(event) {
+        console.log('Received message:'+event.data);
+        var ele2 = document.getElementById("sw_ua");
+        ele2.textContent = event.data;
+      });
+
+      function sendMessage() {
+        navigator.serviceWorker.controller.postMessage('hello,get sw useragent!');
+      }
+    </script>
+  </head>
+  <body onload="register()">
+    <h1>浏览器UA信息</h1>
+    <div>
+      <h3>1.浏览器UA：</h3>
+      <a id="browser_ua"></a>
+      <br>
+    </div>
+    <div>
+      <h3>2.Service Worker UA：</h3>
+      <a id="sw_ua"></a>
+      <br>
+    </div>
+    <button onclick="sendMessage()">获取SW UA</button>
+  </body>
+</html>
