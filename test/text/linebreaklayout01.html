@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+      <title>折行排版测试用例01</title>
+  </head>
+  <body>
+      <div>
+        <h3>Position规则</h3>
+        <p style="white-space: nowrap;">a.当前为&lt;p&gt;标签，设置了禁止换行style，该行文本在正常加载及双指缩放的情况下都不会发生折行！</p>
+        <p style="position: static;">b. CSS Position:static,可折行排版。标签在浏览网页时，由于页面中的文本较小，需要进行放大操作，但是在放大页面后，原本同一行内的文本超出屏幕范围，在阅读期间需要水平方向拖动页面来查看，尤其对于文本行数较多的页面来说，需要反复进行左右滑动的操作，较为不便。</p>
+        <p style="position: relative;left: 30px;">c. CSS Position:relative,可折行排版。标签在浏览网页时，由于页面中的文本较小，需要进行放大操作，但是在放大页面后，原本同一行内的文本超出屏幕范围，在阅读期间需要水平方向拖动页面来查看，尤其对于文本行数较多的页面来说，需要反复进行左右滑动的操作，较为不便。</p>
+        <p style="position: absolute;left: 60px;">d. CSS Position:absolute,不可折行排版。标签在浏览网页时，由于页面中的文本较小，需要进行放大操作，但是在放大页面后，原本同一行内的文本超出屏幕范围，在阅读期间需要水平方向拖动页面来查看，尤其对于文本行数较多的页面来说，需要反复进行左右滑动的操作，较为不便。</p>
+        <p style="position: fixed; bottom: 0px;">e. CSS Position:fixed,不可折行排版。标签在浏览网页时，由于页面中的文本较小，需要进行放大操作，但是在放大页面后，原本同一行内的文本超出屏幕范围，在阅读期间需要水平方向拖动页面来查看，尤其对于文本行数较多的页面来说，需要反复进行左右滑动的操作，较为不便。</p>
+      </div>
+  </body>
+</html>
