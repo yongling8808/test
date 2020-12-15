@@ -41,13 +41,20 @@
 
         <p style="direction: rtl; text-align: left;">e. direction:rtl,text-align:left,不支持折行排版。标签在浏览网页时，由于页面中的文本较小，需要进行放大操作，但是在放大页面后，原本同一行内的文本超出屏幕范围，在阅读期间需要水平方向拖动页面来查看，尤其对于文本行数较多的页面来说，需要反复进行左右滑动的操作，较为不便。</p>
 
-        <p>f.本段落25个字符。不支持折行排版。哈哈哈哈哈哈</p>
-        <p>g.本段落26个字符，支持折行排版。哈哈哈哈哈哈哈哈</p>
+        <p>f.本段字符数>3，非a和li，支持折行排版。</p>
+        <div>
+          <a href="https://3g.qq.com">g.本段a标签，字符<=25，不支持折行排版。</a>
+        </div>
+
+        <div>
+          <a href="https://3g.qq.com">h.本段a标签，字符>25，支持折行排版，哈哈哈哈。</a>
+        </div>
+
         <div style="height: 60px">
-          <p>h.该段落的父元素是div，有固定的高度60px，所以本段落不支持折行排版。</p>
+          <p>i.该段落的父元素是div，有固定的高度60px，所以本段落不支持折行排版。</p>
         </div>
         <div>
-          <span style="font-size: 15px">i.单行block，25<字数<50,同时存在float:right兄弟，不会被折行排版。</span>
+          <span style="font-size: 15px">j.单行block，25<字数<50,同时存在float:right兄弟，不会被折行排版。</span>
           <div style="width: 30px;height: 30px;background-color: blue; float: right;"></div>
         </div>
 
