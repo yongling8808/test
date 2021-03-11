@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>GesturePolicy测试首页</title>
+    <script type="text/javascript">
+        function button1() {
+          setTimeout(function(){
+              window.location.href = "./result.html"
+          }, 4000)
+        }
+
+        function button2() {
+          setTimeout(function(){
+              window.location.href = "./result.html"
+          }, 6000)
+        }
+
+        function button3() {
+          setTimeout(function(){
+              window.location.href = "https://xw.qq.com/"
+          }, 4000)
+        }
+
+        function button4() {
+          setTimeout(function(){
+              window.location.href = "https://xw.qq.com/"
+          }, 6000)
+        }
+    </script>
+</head>
+
+<body>
+	<a href="./case1.html">case1: 4s自动跳转同域其它页面</a>
+    <br>
+    <br>
+    <a href="./case2.html">case2: 6s自动跳转同域其它页面</a>
+    <br>
+    <br>
+    <a href="./case3.html">case3: 4s自动跳转手机腾讯网</a>
+    <br>
+    <br>
+    <a href="./case4.html">case4: 6s自动跳转手机腾讯网</a>
+    <br>
+    <br>
+    <button onclick="button1()">case5：点击后4s跳转至同域其它页面</button>
+    <br>
+    <br>
+    <button onclick="button2()">case6：点击后6s跳转至同域其它页面</button>
+    <br>
+    <br>
+    <button onclick="button3()">case7：点击后4s跳转至手腾网</button>
+    <br>
+    <br>
+    <button onclick="button4()">case8：点击后6s跳转至手腾网</button>
+    <br>
+    <br>
+    <a href="https://wap.faloo.com/">case9: 预读页面验证</a>
+</body>
+
+</html>
