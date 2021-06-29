@@ -17,7 +17,9 @@
       // alert('popstate:'+JSON.stringify(event.state));
       if (event.state.page == 1) {
         document.getElementById('promptText').innerText="即将跳转至新页面..."
-        delayJumpPage2();
+        history.pushState({page: 2}, 'title 0', '#/test');
+        updateCurUrl();
+        document.getElementById('promptText').innerText="最终页"
       }
       updateCurUrl();
     }
