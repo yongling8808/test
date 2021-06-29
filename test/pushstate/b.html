@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>pushState Test!</title>
+</head>
+<body>
+  <script>
+    window.onload = function() {
+      history.replaceState({page: 1}, 'title 0', '#/');
+      updateCurUrl();
+      delayJumpPage2();
+    }
+
+    window.onpopstate = function (event) {
+      // alert('popstate:'+JSON.stringify(event.state));
+      if (event.state.page == 1) {
+        document.getElementById('promptText').innerText="即将跳转至新页面..."
+        delayJumpPage2();
+      }
+      updateCurUrl();
+    }
+
+    function delayJumpPage2() {
+      setTimeout(function(){
+        history.pushState({page: 2}, 'title 0', '#/test');
+        updateCurUrl();
+        document.getElementById('promptText').innerText="最终页"
+      },1000);
+    }
+
+    function updateCurUrl() {
+      document.getElementById('curUrl').innerText=location.href
+    }
+
+  </script>
+  <h1 id='promptText'>即将跳转至新页面...</h1>
+  <br>
+  <br>
+  <br>
+  <a>CurrentUrl:</a><a id='curUrl'></a>
+</body>
+</html>
+
