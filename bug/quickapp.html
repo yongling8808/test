@@ -2,6 +2,25 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<script>
+			function createQuickAppVideo1() {
+				var x = document.createElement("VIDEO");
+				x.setAttribute("width", "1px");
+				x.setAttribute("height", "1px");
+				x.setAttribute("preload", "none");
+				x.setAttribute("src", "http://fastappjump-drcn.hispace.hicloud.com/fastapprouter/1626946804905/?i=com.zsyg.demo&amp;p=pages/Web&amp;a=busid%3D7%26type%3D2%26url%3Dhttps%253A%252F%252Fwaptv.2345.com%252Fdetail%252F10401.html");
+				document.body.appendChild(x);
+			}
+
+			function createQuickAppVideo2() {
+				var x = document.createElement("VIDEO");
+				x.setAttribute("width", "1px");
+				x.setAttribute("height", "1px");
+				x.setAttribute("preload", "none");
+				x.setAttribute("src", "http://a1.xmzsyg.com:8088/openappquick?url=http%3A%2F%2Ffastappjump-drcn.hispace.hicloud.com%2Ffastapprouter%2F1626946804905%2F%3Fi%3Dcom.zsyg.demo%26p%3Dpages%2FWeb%26a%3Dbusid%253D7%2526type%253D2%2526url%253Dhttps%25253A%25252F%25252Fwaptv.2345.com%25252Fdetail%25252F10401.html");
+				document.body.appendChild(x);
+			}
+		</script>
 	</head>
 	<body>
 		<h1>华为跳转快应用测试</h1>
@@ -19,5 +38,11 @@
 		<br>
 		<br>
 		<iframe src="./iframequickapp.html"></iframe>
+		<br>
+		<br>
+		<button onclick="createQuickAppVideo1()">创建跳转快应用video标签</button>
+		<br>
+		<br>
+		<button onclick="createQuickAppVideo2()">创建通过302跳转快应用video标签</button>
 	</body>
 </html>
