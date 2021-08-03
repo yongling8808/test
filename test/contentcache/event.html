@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="x5-cache" content="enable">
+    <title>x5-cache meta Test!</title>
+    <script type="text/javascript">
+
+      window.addEventListener('pageshow', function(event) {
+          console.log('------pageshow');
+          printLog("pageshow");
+      });
+
+      window.addEventListener('pagehide', function(event) {
+          console.log('------pagehide');
+          printLog("pagehide");
+      });
+  
+    	function printLog(customevent) {
+    		document.getElementById("output").innerHTML += customevent;
+        document.getElementById("output").innerHTML += '<br>';
+    	}
+    </script>
+
+</head>
+<body>
+
+<h2>x5-cache event test!</h2>
+<br>
+<br>
+<a>output:</a>
+<div id="output">
+</div>
+<br>
+<br>
+<br>
+<a>------------------------------</a>
+<br>
+<a href="https://3gqq.qq.com/">3gqq</a>
+</body>
+</html>
+
