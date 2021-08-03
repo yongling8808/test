@@ -9,12 +9,12 @@
 
       window.addEventListener('pageshow', function(event) {
           console.log('------pageshow');
-          printLog("pageshow");
+          printLog(new Date() + "  |  pageshow");
       });
 
       window.addEventListener('pagehide', function(event) {
           console.log('------pagehide');
-          printLog("pagehide");
+          printLog(new Date() + "  |  pagehide");
       });
   
     	function printLog(customevent) {
