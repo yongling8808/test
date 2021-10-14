@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video-gesture</title>
+</head>
+
+<body>
+    <video id="video" controls preload src="https://yongling8808.github.io/test/video/movie/movie.mp4" height="300" width="300"></video>
+    <h3>1.touchstart</h3>
+    <button id="videoPlayBtn1">play video</button>
+    <h3>2.touchend</h3>
+    <button id="videoPlayBtn2">play video</button>
+    <h3>3.click</h3>
+    <button id="videoPlayBtn3">play video</button>
+    <h3>4.timer</h3>
+    <button id="videoPlayBtn4">play video</button>
+    <h3>5.fetch promis</h3>
+    <button id="videoPlayBtn5">play video</button>
+
+    <script>
+        window.onload = function () {
+
+            var videoBtn1 = document.getElementById('videoPlayBtn1');
+            var videoBtn2 = document.getElementById('videoPlayBtn2');
+            var videoBtn3 = document.getElementById('videoPlayBtn3');
+            var videoBtn4 = document.getElementById('videoPlayBtn4');
+            var videoBtn5 = document.getElementById('videoPlayBtn5');
+
+            var video = document.getElementById('video');
+
+            videoBtn1.addEventListener('touchstart', function (evt) {
+                video.play();
+            })
+
+            videoBtn2.addEventListener('touchend', function (evt) {
+                video.play();
+            })
+
+            videoBtn3.addEventListener('click', function (evt) {
+                video.play();
+            })
+
+            videoBtn4.addEventListener('touchstart', function (evt) {
+                setTimeout(function(){
+                    video.play();
+                },1000); 
+            })
+
+            videoBtn5.addEventListener('touchstart', function (evt) {
+                fetch('./video_gesture.html')
+                    .then(function(response) {
+                        video.play();
+                    })
+                    .catch(function(myBlob) {
+                        video.play();
+                    });
+            })
+        }
+    </script>
+</body>
+
+</html>
