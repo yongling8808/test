@@ -53,6 +53,20 @@
             v.playbackRate = value;
         }
 
+        function switchSrc(value) {
+            var v = document.getElementById('video1');
+            if (value == 1) {
+                v.src = "http://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4";
+            } else {
+                v.src = "http://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie1.mp4";
+            }
+        }
+
+        function reset() {
+            var v = document.getElementById('video1');
+            v.load();
+        }
+
         function createVideo() {
             var videoContainer = document.getElementById('videoContainer');
             var v = document.createElement("VIDEO");
@@ -133,6 +147,13 @@
             <button onclick="playbackRate(2)">倍速2</button>
             <button onclick="playbackRate(1)">倍速1</button>
             <button onclick="playbackRate(0.2)">倍速0.2</button>
+        </div>
+        <div>
+            <button onclick="switchSrc(1)">播放视频1</button>
+            <button onclick="switchSrc(2)">播放视频2</button>
+        </div>
+        <div>
+            <button onclick="reset()">重置视频</button>
         </div>
     </div>
     <div>
