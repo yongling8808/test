@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video display none 1</title>
+</head>
+
+<body>
+    <h3>下方为初始不可见video</h3>
+    <div id="video_container" style="display: none;">
+        <video id="video" controls preload height="300" width="300"></video>
+    </div>
+    <button id="btn1">显示video</button>
+
+    <script>
+        window.onload = function () {
+            var videoBtn1 = document.getElementById('btn1')
+            videoBtn1.addEventListener('click', function (evt) {
+                var video = document.getElementById('video')
+                video.setAttribute("src", "http://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4")
+                var videoContainer = document.getElementById('video_container')
+                videoContainer.style.display="block"
+            })
+        }
+    </script>
+</body>
+
+</html>
