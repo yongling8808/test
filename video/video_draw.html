@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>hw canvas drawimage video </title>
+</head>
+<body>
+<p><button onclick="playVideo()">playVideo</button></p>
+<p><button onclick="playCanvas()">playCanvas</button></p>
+<p><button onclick="fetchCanvasData()">fetchCanvasData</button></p>
+<p>Original Video</p>
+<video id="video" controls src="http://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4" x5-video-player-type="h5-page" loop> </video>
+<p>Draw Video To Canvas</p>
+<canvas id="canvas" style="border-color: red"></canvas>
+<p>Copy Canvas Data To Canvas</p>
+<canvas id="canvas2" style="border-color: yellow"></canvas>
+<script>
+    var width=height=300;
+
+    var video =document.getElementById("video");
+    video.width=width;
+    video.height=height;
+
+    var canvas = document.getElementById("canvas");
+    canvas.height = width;
+    canvas.width = height;
+    var ctx = canvas.getContext("2d");
+
+    var canvas2 = document.getElementById("canvas2");
+    canvas2.height = width;
+    canvas2.width =height;
+    var ctx2 = canvas2.getContext("2d");
+
+    function playVideo() {
+        video.play();
+    }
+
+    function playCanvas(){
+        ctx.drawImage(video,0,0);
+        requestAnimationFrame(playCanvas);
+    }
+
+    function fetchCanvasData() {
+        var data = ctx.getImageData(0, 0, width, height);
+        ctx2.putImageData(data, 0, 0, 0, 0,width,height);
+    }
+</script>
+</body>
+</html>
