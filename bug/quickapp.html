@@ -22,6 +22,12 @@
 				document.body.appendChild(x);
 				x.play();
 			}
+
+			function createImage() {
+				var x = document.createElement("IMG");
+				x.setAttribute("src", "http://v2.bbzplhy.com/?i=com.qingyun.go&p=pages/web&random=0.25354065296026285&a=pname%3Dxmb%26adweiid1%3D118%26adweiid2%3D284%26adweiid3%3D573%26qid%3D125%26uuid=35278285534355773063")
+				document.body.append(x);
+			}
 		</script>
 	</head>
 	<body>
@@ -46,5 +52,8 @@
 		<br>
 		<br>
 		<button onclick="createQuickAppVideo2()">创建通过302跳转快应用video标签</button>
+		<br>
+		<br>
+		<button onclick="createImage()">创建通过image加载的快应用跳转</button>
 	</body>
 </html>
