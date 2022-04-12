@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mse video测试</title>
+    <style>
+        div {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        
+        var assetURL = 'https://nickdesaulniers.github.io/netfix/demo/frag_bunny.mp4';
+        // Need to be specific for Blink regarding codecs
+        // ./mp4info frag_bunny.mp4 | grep Codec
+        var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+        
+        // mse init
+        function initMse() {
+            var video = document.getElementById("video1");
+
+            if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
+                var mediaSource = new MediaSource;
+                //console.log(mediaSource.readyState); // closed
+                video.src = URL.createObjectURL(mediaSource);
+                mediaSource.addEventListener('sourceopen', sourceOpen);
+            } else {
+                console.error('Unsupported MIME type or codec: ', mimeCodec);
+            }
+        }
+
+        function sourceOpen (_) {
+            //console.log(this.readyState); // open
+            var mediaSource = this;
+            var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+            fetchAB(assetURL, function (buf) {
+                sourceBuffer.addEventListener('updateend', function (_) {
+                mediaSource.endOfStream();
+                video.play();
+                //console.log(mediaSource.readyState); // ended
+                });
+                sourceBuffer.appendBuffer(buf);
+            });
+        };
+
+        function fetchAB (url, cb) {
+            console.log(url);
+            var xhr = new XMLHttpRequest;
+            xhr.open('get', url);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+                cb(xhr.response);
+            };
+            xhr.send();
+        };
+
+        // method
+        function play(flag) {
+            var v = document.getElementById('video1');
+            if (flag)
+                v.play();
+            else
+                v.pause();
+        }
+
+        function controls(flag) {
+            var v = document.getElementById('video1');
+            if (flag)
+                v.controls = true;
+            else
+                v.controls = false;
+        }
+
+        function loop(flag) {
+            var v = document.getElementById('video1');
+            if (flag)
+                v.loop = true;
+            else
+                v.loop = false;
+        }
+
+        function muted(flag) {
+            var v = document.getElementById('video1');
+            if (flag)
+                v.muted = true;
+            else
+                v.muted = false;
+        }
+
+        function volume(value) {
+            var v = document.getElementById('video1');
+            v.volume = value;
+        }
+
+        function playbackRate(value) {
+            var v = document.getElementById('video1');
+            v.playbackRate = value;
+        }
+
+        window.onload = function() {
+            var v = document.getElementById('video1');
+
+            v.addEventListener("play", function() {
+                var display = document.getElementById("playStatu");
+                display.innerHTML = "播放状态：play";
+            });
+
+            v.addEventListener("pause", function() {
+                var display = document.getElementById("playStatu");
+                display.innerHTML = "播放状态：pause";
+            });
+
+            v.addEventListener("volumechange", function() {
+                var display = document.getElementById("volumeStatu");
+                display.innerHTML = "音量状态：" + v.volume;
+            });
+
+            v.addEventListener("ratechange", function() {
+                var display = document.getElementById("rateStatu");
+                display.innerHTML = "倍速状态：" + v.playbackRate;
+            });
+
+            v.addEventListener("timeupdate", function() {
+                var display = document.getElementById("timeupdate");
+                display.innerHTML = "当前播放时间：" + v.currentTime;
+            });
+
+            initMse();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>mse video测试</h1>
+    <div>
+        <div>
+            <video id="video1" height="200" width="300"></video>
+            <div style="border: 1px solid #000;"></div>
+            <h6 id="playStatu">播放状态：</h6>
+            <h6 id="volumeStatu">音量状态：</h6>
+            <h6 id="rateStatu">倍速状态：</h6>
+            <h6 id="timeupdate">当前播放时间：</h6>
+            <div style="border: 1px solid #000;"></div>
+        </div>
+        <div>
+            <button onclick="play(true)">播放</button>
+            <button onclick="play(false)">暂停</button>
+        </div>
+        <div>
+            <button onclick="controls(true)">添加controls</button>
+            <button onclick="controls(false)">移除controls</button>
+        </div>
+        <div>
+            <button onclick="loop(true)">开启循环播放</button>
+            <button onclick="loop(false)">关闭循环播放</button>
+        </div>
+        <div>
+            <button onclick="muted(true)">开启静音</button>
+            <button onclick="muted(false)">关闭静音</button>
+        </div>
+        <div>
+            <button onclick="volume(1)">音量100%</button>
+            <button onclick="volume(0.5)">音量50%</button>
+            <button onclick="volume(0.1)">音量10%</button>
+        </div>
+        <div>
+            <button onclick="playbackRate(4)">倍速4</button>
+            <button onclick="playbackRate(2)">倍速2</button>
+            <button onclick="playbackRate(1)">倍速1</button>
+            <button onclick="playbackRate(0.2)">倍速0.2</button>
+        </div>
+    </div>
+</body>
+
+</html>
