@@ -16,7 +16,7 @@
         // Need to be specific for Blink regarding codecs
         // ./mp4info frag_bunny.mp4 | grep Codec
         var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
-        
+
         // mse init
         function initMse() {
             var video = document.getElementById("video1");
@@ -38,7 +38,9 @@
             fetchAB(assetURL, function (buf) {
                 sourceBuffer.addEventListener('updateend', function (_) {
                 mediaSource.endOfStream();
-                video.play();
+                var display = document.getElementById("loadstatus");
+                display.innerHTML = "MSE视频资源：已加载完成";
+                // video.play();
                 //console.log(mediaSource.readyState); // ended
                 });
                 sourceBuffer.appendBuffer(buf);
@@ -142,6 +144,7 @@
             <h6 id="volumeStatu">音量状态：</h6>
             <h6 id="rateStatu">倍速状态：</h6>
             <h6 id="timeupdate">当前播放时间：</h6>
+            <h6 id="loadstatus">MSE视频资源：加载中</h6>
             <div style="border: 1px solid #000;"></div>
         </div>
         <div>
