@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片合并(3+1)(1)</title>
+    <style>
+        div {
+            margin-top: 10px;
+        }
+
+        .oriImg {
+            width: 40px;
+            height: 80px;
+            padding-left: 10px;
+        }
+    </style>
+
+<script>
+    function init() {
+        document.getElementById("file1").addEventListener("change", function(e) {
+            document.getElementById("img1").src = window.URL.createObjectURL(document.getElementById("file1").files[0])
+        })
+
+        document.getElementById("file2").addEventListener("change", function(e) {
+            document.getElementById("img2").src = window.URL.createObjectURL(document.getElementById("file2").files[0])
+        }) 
+
+        document.getElementById("file3").addEventListener("change", function(e) {
+            document.getElementById("img3").src = window.URL.createObjectURL(document.getElementById("file3").files[0])
+        }) 
+
+        document.getElementById("file4").addEventListener("change", function(e) {
+            document.getElementById("img4").src = window.URL.createObjectURL(document.getElementById("file4").files[0])
+        }) 
+
+        document.getElementById("file5").addEventListener("change", function(e) {
+            document.getElementById("img5").src = window.URL.createObjectURL(document.getElementById("file5").files[0])
+        }) 
+    }
+
+    function downloadImg(url) {
+        var x = new XMLHttpRequest()
+        x.open('GET', url, true)
+        x.responseType = 'blob'
+        x.onload = function(e) {
+            var url = window.URL.createObjectURL(x.response)
+            var a = document.createElement('a')
+            a.href = url
+            a.download = ''
+            a.click()
+        }
+        x.send()
+    }
+
+    function mergeImages() {
+        let imgWidth = 200
+        let imgHeight = 400
+        let canvasWidth = 600
+        let canvasHeight = 600
+
+        let canvas = document.createElement('canvas')
+        canvas.width = canvasWidth
+        canvas.height = canvasHeight
+        let context = canvas.getContext('2d')
+        context.rect(0, 0, canvas.width, canvas.height)
+
+        context.drawImage(document.getElementById("img1"), 0, 0, imgWidth, imgHeight)
+        context.drawImage(document.getElementById("img2"), imgWidth, 0, imgWidth, imgHeight)
+        context.drawImage(document.getElementById("img3"), imgWidth * 2, 0, imgWidth, imgHeight)
+        context.drawImage(document.getElementById("img4"), imgWidth * 3, 0, imgWidth, imgHeight)
+        context.drawImage(document.getElementById("img5"), 0, imgHeight, imgWidth, imgHeight)
+
+        context.font = 'normal 12px "楷体"';
+        context.fillText("爸爸", imgWidth / 2 - 10, imgHeight * 1 / 2);
+        context.fillText("妈妈", imgWidth / 2 - 10 + imgWidth, imgHeight * 1 / 2);
+
+        context.fillText("爸爸", imgWidth / 2 - 10, imgHeight * 1 / 2 + imgHeight);
+        context.fillText("妈妈", imgWidth / 2 - 10 + imgWidth, imgHeight * 1 / 2 + imgHeight);
+        
+        let base64 = canvas.toDataURL('image/png')
+
+        let img = document.createElement('img')
+        img.width = canvasWidth
+        img.height = canvasHeight
+        img.setAttribute('src', base64)
+        document.body.appendChild(img)
+        return base64
+    }
+
+    function mergeImagesAndDownload() {
+        let base64 = mergeImages()
+        downloadImg(base64)
+    }
+
+</script>
+</head>
+
+<body onload="init()">
+    <h1>健康码、行程码合并</h1>
+    <h6>1. 爸爸健康码</h6>
+    <img id="img1" class="oriImg"></img>
+    <br>
+    <input type="file" accept="image/*" id="file1">
+    <br>
+
+    <h6>2. 妈妈健康码</h6>
+    <img id="img2" class="oriImg"></img>
+    <br>
+    <input type="file" accept="image/*" id="file2">
+    <br>
+
+    <h6>3. 小孩健康码</h6>
+    <img id="img3" class="oriImg"></img>
+    <br>
+    <input type="file" accept="image/*" id="file3">
+    <br>
+    
+    <h6>4. 爸爸行程码</h6>
+    <img id="img4" class="oriImg"></img>
+    <br>
+    <input type="file" accept="image/*" id="file4">
+    <br>
+
+    <h6>5. 妈妈行程码</h6>
+    <img id="img5" class="oriImg"></img>
+    <br>
+    <input type="file" accept="image/*" id="file5">
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <button onclick="mergeImages()">点击生成合并后图片</button>
+    <br>
+    <br>
+    <button onclick="mergeImagesAndDownload()">点击生成合并后图片并下载</button>
+</body>
+
+</html>
