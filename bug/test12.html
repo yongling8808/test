@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR TEST</title>
+</head>
+<body>
+  <h1>XHR TEST</h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <button onclick="start(100)">启动（间隔100ms）</button>
+  <br>
+  <br>
+  <button onclick="start(500)">启动（间隔500ms）</button>
+  <br>
+  <br>
+  <button onclick="start(1000)">启动（间隔1s）</button>
+  <br>
+  <br>
+  <button onclick="start(2000)">启动（间隔2s）</button>
+  <br>
+  <p id="index">index:</p>
+
+  <script type="text/javascript">
+      var baseUrl = 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/video/720_2400000/dash/';
+      var initUrl = baseUrl + 'init.mp4';
+      var templateUrl = baseUrl + 'segment_1.m4s';
+      var sourceBuffer;
+      var index = 0;
+      var numberOfChunks = 52;
+
+      var index = 0;
+  
+      function start(interval) {
+        setInterval(function() {
+          index++;
+          console.log("index:", index)
+          document.getElementById("index").innerHTML="index:"+index
+          GET(templateUrl);
+        }, interval);
+      }
+      
+
+      function GET(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = 'arraybuffer';
+
+        xhr.onload = function(e) {
+          if (xhr.status != 200) {
+            console.warn('Unexpected status code ' + xhr.status + ' for ' + url);
+            return false;
+          }
+          console.log("xhr ok!");
+        };
+
+        xhr.send();
+      }
+  </script>
+</body>
+</html>
