@@ -22,6 +22,9 @@
   <br>
   <button onclick="start(2000)">启动（间隔2s）</button>
   <br>
+  <br>
+  <button onclick="startOnce()">启动一次</button>
+  <br>
   <p id="index">index:</p>
 
   <script type="text/javascript">
@@ -41,6 +44,13 @@
           document.getElementById("index").innerHTML="index:"+index
           GET(templateUrl);
         }, interval);
+      }
+
+      function startOnce(interval) {
+          index++;
+          console.log("index:", index)
+          document.getElementById("index").innerHTML="index:"+index
+          GET(templateUrl);
       }
       
 
