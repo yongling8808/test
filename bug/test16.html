@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <title>Reffer Test!</title>
+</head>
+<body>
+  <div id="timeDom"></div>
+  <br>
+  <button onclick="openNewPage()">点击打开新页面</button>
+  <br>
+  <br>
+  <br>
+  <button onclick="goBack()">点击后退</button>
+  
+  <script>
+    document.getElementById('timeDom').innerHTML = 'Date.now() = ' + Date.now() + '<br>document.referrer = ' + document.referrer;
+
+    function openNewPage() {
+      location.href = './test16.html?_' + Date.now();
+    }
+
+    function goBack() {
+      window.history.go(-1);
+    }
+  </script>
+
+</body>
+</html>
