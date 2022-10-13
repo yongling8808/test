@@ -1,0 +1,25 @@
+
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <meta content="always" name="referrer" />
+  <script>
+  try {
+      var list = JSON.parse(localStorage.getItem("tc_time_log") || "[]");
+      list.push({
+          t: +new Date,
+          b: parseInt("3"),
+          w: (+new Date) - parseInt(localStorage.getItem("tc_time_start") || "0")
+      });
+      localStorage.setItem("tc_time_log", JSON.stringify(list));
+      localStorage.removeItem("tc_time_start");
+  } catch (e) {
+  }
+  
+  window.location.replace("https://images.google.com/");
+  </script>
+  <noscript>
+  <meta http-equiv="refresh" content="0; url=https://images.google.com/" />
+  </noscript>
+  </head>
+  <body>
+  </body>
+  </html>
