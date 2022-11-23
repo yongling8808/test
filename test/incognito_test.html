@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,shrink-to-fit=no">
+    <title>Incognito Test</title>
+    <script>
+      function setCookie(c_name, value) {
+          document.cookie = c_name + "=" + escape(value);
+      }
+
+      function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+          c_start = document.cookie.indexOf(c_name + "=")
+          if (c_start !== -1) {
+              c_start = c_start + c_name.length + 1;
+              c_end=document.cookie.indexOf(";", c_start);
+              if (c_end === -1) {
+                  c_end = document.cookie.lengt
+              }
+              return unescape(document.cookie.substring(c_start,c_end));
+          }
+          return "";
+        }
+      }
+
+      function init() {
+        document.getElementById("cookie_num").innerHTML = "Number:" + getCookie("num");
+        document.getElementById("local_storage_num").innerHTML = "Number:" + localStorage.getItem("num");
+      }
+
+      function clickCookieBtn() {
+        let num = getCookie("num");
+        if (num != undefined) {
+          num = parseInt(num);
+          num++;
+        } else {
+          num = 1;
+        }
+        document.getElementById("cookie_num").innerHTML = "Number:" + num;
+        setCookie("num", num);
+      }
+
+      function clickLocalStorageBtn() {
+        let num = localStorage.getItem("num");
+        if (num != undefined) {
+          num = parseInt(num);
+          num++;
+        } else {
+          num = 1;
+        }
+        document.getElementById("local_storage_num").innerHTML = "Number:" + num;
+        localStorage.setItem("num", num);
+      }
+
+      function clickSessionStorageBtn() {
+        let num = sessionStorage.getItem("num");
+        if (num != undefined) {
+          num = parseInt(num);
+          num++;
+        } else {
+          num = 1;
+        }
+        document.getElementById("session_storage_num").innerHTML = "Number:" + num;
+        sessionStorage.setItem("num", num);
+      }
+
+    </script>
+</head>
+<body onload="init()">
+  <h2>Incognito Test</h2>
+  <div>
+    <h4>1.Cookie Test</h4>
+    <p id="cookie_num">Number:</p>
+    <button onclick="clickCookieBtn()">Click ++</button>
+  </div>
+
+  <div>
+    <h4>2.LocalStorage Test</h4>
+    <p id="local_storage_num">Number:</p>
+    <button onclick="clickLocalStorageBtn()">Click ++</button>
+  </div>
+
+  <div>
+    <h4>2.SessionStorage Test</h4>
+    <p id="session_storage_num">Number:</p>
+    <button onclick="clickSessionStorageBtn()">Click ++</button>
+  </div>
+</body>
+</html>
+
