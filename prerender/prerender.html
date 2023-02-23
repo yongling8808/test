@@ -60,11 +60,11 @@
 <script>
   function getHrefFromRadioButton() {
     if (document.querySelector('#timerRadio').checked)
-      return "/timer.html";
+      return "/test/prerender/timer.html";
     if (document.querySelector('#nestedRadio').checked)
-      return '/nested.html';
+      return '/test/prerender/nested.html';
       if (document.querySelector('#subframeRadio').checked)
-      return '/subframe-container.html';
+      return '/test/prerender/subframe-container.html';
   }
 
   const appendLog = (text) => {
