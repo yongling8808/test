@@ -1,0 +1,62 @@
+<head>
+  <title>Same-origin prerendering demo</title>
+  <meta http-equiv="origin-trial" content="AiVbneHmD+lvoxuoyj+/RCjMXAtaRq2x2rokiZ0nDpvOrf8eIb9kZ6b+cYbdt47ZFMgYuMeIgXW4TLOvej09AQUAAABieyJvcmlnaW4iOiJodHRwczovL3ByZXJlbmRlcjItc3BlY3J1bGVzLmdsaXRjaC5tZTo0NDMiLCJmZWF0dXJlIjoiUHJlcmVuZGVyMiIsImV4cGlyeSI6MTY0NTU3NDM5OX0=">
+</head>
+
+<style>
+  .event {
+    margin:4px;
+    padding:0;
+  }
+</style>
+
+<p>
+  <!-- Change the text back to "Slow image (1s to load)" -->
+  Image.
+   
+</p>
+<!-- Use the image path below after delaay.me uses a legal cert. -->
+<!--img height="200px" src="https://deelay.me/1000/https://lehub.laposte.fr/sites/default/files/styles/1020x575/public/visuel_principal/dossier/dossier-sep19-leader.jpg?itok=_uQM2sEN"-->
+<img height="500px" src="https://lehub.laposte.fr/sites/default/files/styles/1020x575/public/visuel_principal/dossier/dossier-sep19-leader.jpg">
+
+<div id="log"></div>
+
+
+<script>
+  const AppendLog = (text) => {
+    let p = document.createElement("p");
+    p.classList.add("event");
+    p.innerText = text;
+    document.querySelector("#log").prepend(p);
+  }
+  const main = async function() {
+    let i = 0
+    const increment = 100;
+    while (1) {
+      await new Promise(resolve => setTimeout(resolve, increment));
+      AppendLog(`Time = ${i}ms`)
+      i += increment;
+    }
+  }
+  main();
+  
+  AppendLog(`document.prerendering is: ${document.prerendering}`);
+  document.addEventListener('prerenderingchange', () => {
+    AppendLog("event: prerenderingchange");
+    AppendLog(`document.prerendering is: ${document.prerendering}`);
+  });
+  
+  for (const event of [
+        'visibilitychange',
+        'pagehide',
+        'pageshow',
+        'freeze',
+        'resume',
+        'unload',
+        'load',
+        'DOMContentLoaded'
+  ]) {
+    const e = event;
+    addEventListener(e, () => AppendLog("event: " + e));
+  }
+</script>

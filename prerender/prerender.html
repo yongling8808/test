@@ -1,0 +1,132 @@
+<!doctype html>
+<head>
+  <title>Same-origin prerendering demo</title>
+</head>
+
+<div>
+  <p>
+    This site uses the <a href="https://github.com/WICG/nav-speculation/">Speculation Rules prerendering</a> feature which is available on Chrome Android from 103 and Chrome Desktop from 105.
+  </p>
+  <p>
+    Otherwise, if you using a different flavor of Chrome, then to enable the prerender2 flag:
+    <input value="chrome://flags/#enable-prerender2" size="60" />
+  </p>
+
+  <div>
+    Select the page to prerender:
+    <p>
+      <input type="radio" id="timerRadio" name="target" value="timer" checked />
+      <label for="timerRadio"><a href="timer.html">timer.html</a> <a href="timer.html?target_hint=blank" target="_blank">timer.html?target_hint=blank</a>: simple demo</label>
+    </p>
+    <p>
+      <input type="radio" id="nestedRadio" name="target" value="nested" />
+      <label for="nestedRadio"><a href="nested.html">nested.html</a>: prerender from a prerender</label>
+    </p>
+    <p>
+      <input type="radio" id="subframeRadio" name="target" value="subframe" />
+      <label for="subframeRadio"><a href="subframe-container.html">subframe-container.html</a>: page with a subframe</label>
+    </p>
+  
+  </div>
+
+  <div>
+    <button id="specRules">Add speculationrules</button>
+    <button id="linkRel">Add link rel=prerender</button>
+  </div>
+
+  <ul id="log">
+    <li>Click a button to start a prerender.</li>
+  </ul>
+
+  <!--
+  <p>
+    Some variations about the "a" tag:  
+  </p>
+  <ul>
+    <li><a href="https://prerender2.glitch.me/timer.html" download >time.html + download </a></li>
+    <li><a href="https://prerender2.glitch.me/timer.html" hreflang="fr">time.html + hreflang=fr</a></li>
+    <li><a href="https://prerender2.glitch.me/timer.html" target="_parent">time.html + target=_parent</a></li>
+  </ul>
+
+  <p>
+    Some variations:
+  </p>
+  <ul>
+    <li><a href="./iframe.html">iframe.html</a></li>
+    <li><a href="./data-url.html">data-url.html</a></li>
+    <li><a href="./blob-url.html">blob-url.html</a></li>
+  </ul>
+--></div>
+<script>
+  function getHrefFromRadioButton() {
+    if (document.querySelector('#timerRadio').checked)
+      return "/timer.html";
+    if (document.querySelector('#nestedRadio').checked)
+      return '/nested.html';
+      if (document.querySelector('#subframeRadio').checked)
+      return '/subframe-container.html';
+  }
+
+  const appendLog = (text) => {
+    let li = document.createElement("li");
+    li.innerText = text;
+    document.querySelector("#log").appendChild(li);
+  }
+  
+  if (!('supports' in HTMLScriptElement && HTMLScriptElement.supports('speculationrules'))) {
+    appendLog('Speculation Rules is not supported on your browser.');
+  }
+
+  function addSpeculationRules(href) {
+    const specScript = document.createElement("script");
+    specScript.type = "speculationrules";
+    specScript.text = `
+      {
+        "prerender":[
+          {
+            "source": "list",
+            "urls": ["${href}"]
+          }
+        ]
+      }`;
+    appendLog('added speculationrules to: ' + href);
+    document.body.appendChild(specScript);
+  }
+  
+  function addSpeculationRulesWithTargetHintBlank(href) {
+    const specScript = document.createElement("script");
+    specScript.type = "speculationrules";
+    specScript.text = `
+      {
+        "prerender":[
+          {
+            "source": "list",
+            "urls": ["${href}"],
+            "target_hint": "_blank"
+          }
+        ]
+      }`;
+    appendLog('added speculationrules to: ' + href);
+    document.body.appendChild(specScript);
+  }
+
+  const specButton = document.querySelector("#specRules");
+  specButton.addEventListener("click", e => {
+    const href = getHrefFromRadioButton();
+    addSpeculationRules(href);
+    // addSpeculationRulesWithTargetHintBlank(href + "?target_hint=blank");
+  });
+
+  function addLinkRel(href) {
+    const link = document.createElement("link");
+    link.rel = 'prerender';
+    link.href = href;
+    document.body.appendChild(link);
+    appendLog('added link rel=prerender to: ' + href);
+  }
+
+  const linkRelButton = document.querySelector('#linkRel');
+  linkRelButton.addEventListener('click', e => {
+    addLinkRel(getHrefFromRadioButton());
+  });
+</script>
