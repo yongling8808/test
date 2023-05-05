@@ -9,32 +9,66 @@
 
 <body>
     <h3>drag the div</h3>
-    <div id="drag" style="width: 50px; height: 50px; background-color: red;"> </div>
-    <p id="status"></p>
+    <div id="drag1" style="width: 50px; height: 50px; background-color: red;"> </div>
+    <p id="statu1"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="drag2" style="width: 50px; height: 50px; background-color: red;"> </div>
+    <p id="statu2"></p>
 
     <script>
         window.onload = function () {
-            var drag = document.getElementById('drag');
-            var status = document.getElementById('status');
+            var drag1 = document.getElementById('drag1');
+            var statu1 = document.getElementById('statu1');
 
-            drag.addEventListener('touchstart', function (evt) {
+            drag1.addEventListener('touchstart', function (evt) {
                 console.log("touch start");
-                status.innerHTML="touch start"
+                statu1.innerHTML="touch start"
             })
 
-            drag.addEventListener('touchmove', function (evt) {
+            drag1.addEventListener('touchmove', function (evt) {
                 console.log("touch move");
-                status.innerHTML="touch move"
+                statu1.innerHTML="touch move"
             })
 
-            drag.addEventListener('touchend', function (evt) {
+            drag1.addEventListener('touchend', function (evt) {
                 console.log("touch end");
-                status.innerHTML="touch end"
+                statu1.innerHTML="touch end"
             })
 
-            drag.addEventListener('touchcancel', function (evt) {
+            drag1.addEventListener('touchcancel', function (evt) {
                 console.log("touch cancel");
-                status.innerHTML="touch cancel"
+                statu1.innerHTML="touch cancel"
+            })
+
+
+            var drag2 = document.getElementById('drag2');
+            var statu2 = document.getElementById('statu2');
+
+            drag2.addEventListener('touchstart', function (evt) {
+                evt.preventDefault();
+                console.log("touch start");
+                statu2.innerHTML="touch start"
+            })
+
+            drag2.addEventListener('touchmove', function (evt) {
+                evt.preventDefault();
+                console.log("touch move");
+                statu2.innerHTML="touch move"
+            })
+
+            drag2.addEventListener('touchend', function (evt) {
+                evt.preventDefault();
+                console.log("touch end");
+                statu2.innerHTML="touch end"
+            })
+
+            drag2.addEventListener('touchcancel', function (evt) {
+                evt.preventDefault();
+                console.log("touch cancel");
+                statu2.innerHTML="touch cancel"
             })
         }
     </script>
