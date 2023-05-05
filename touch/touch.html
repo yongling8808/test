@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video-gesture</title>
+</head>
+
+<body>
+    <h3>drag the div</h3>
+    <div id="drag" style="width: 50px; height: 50px; background-color: red;"> </div>
+    <p id="status"></p>
+
+    <script>
+        window.onload = function () {
+            var drag = document.getElementById('drag');
+            var status = document.getElementById('status');
+
+            drag.addEventListener('touchstart', function (evt) {
+                console.log("touch start");
+                status.innerHTML="touch start"
+            })
+
+            drag.addEventListener('touchmove', function (evt) {
+                console.log("touch move");
+                status.innerHTML="touch move"
+            })
+
+            drag.addEventListener('touchend', function (evt) {
+                console.log("touch end");
+                status.innerHTML="touch end"
+            })
+
+            drag.addEventListener('touchcancel', function (evt) {
+                console.log("touch cancel");
+                status.innerHTML="touch cancel"
+            })
+        }
+    </script>
+</body>
+
+</html>
