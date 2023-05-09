@@ -1,0 +1,24 @@
+<html>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+    <title>JS OOM</title>
+    <script>
+      function browser_init() {
+        console.log("begin")
+        var b;
+        for(var i=0; i<1000; i++) {
+          b = new Array(1024*1024*1024).fill(1);
+        }
+        console.log("end")
+      }
+    </script>
+  </head>
+  <body onload="browser_init()">
+    <div>
+      <h3>JS OOM</h3>
+      <br>
+    </div>
+  </body>
+</html>
+
