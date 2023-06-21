@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>hls to mse Demo</title>
+    <script>
+      MediaSource = undefined;
+    </script>
+    <script src="https://server.yezy.tech/chrotest/video/dplayer/js/hls.js"></script>
+    <script src="https://server.yezy.tech/chrotest/video/dplayer/js/DPlayer.min.js"></script>
+</head>
+
+<body>
+    <button onclick="check()">Check Media Source</button>
+    <p id="checkresult"></p>
+    <button onclick="initPlayer()">Init Player</button>
+    <div id="dplayer" style="width:fit-content; height: 400px;"></div>
+    <button onclick="showSrc()">showSrc</button>
+</body>
+<script>
+    function check() {
+      if (MediaSource === undefined) {
+        document.getElementById("checkresult").innerText='not support mse!';
+      } else {
+        document.getElementById("checkresult").innerText='support mse!';
+      }
+    }
+
+    function initPlayer() {
+        const dp = new DPlayer({
+          container: document.getElementById('dplayer'),
+          video: {
+              // url: 'https://playertest.longtailvideo.com/adaptive/progdatime/playlist2.m3u8',
+              url: 'https://ilive.gtimg.com/module/theaterJsSdk/1.0.0/file/movie2/playlist.m3u8',
+              type: 'customHls',
+              customType: {
+                  customHls: function(video, player) {
+                      try {
+                          const hls = new Hls();
+                          hls.loadSource(video.src);
+                          hls.attachMedia(video);
+                      } catch (error) {
+                          alert(error);
+                      }
+
+                  },
+              },
+          },
+      });
+    }
+
+</script>
+
+</html>
