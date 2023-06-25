@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>index page</title>
+    </head>
+    <body>
+        <p>index page: </p >
+        count: <span id="container">0</span>
+        <button id="add">add</button>
+        <br>
+        // 利用iframe加载
+        <iframe src="./iframe.html"></iframe>
+    </body>
+    <script type="text/javascript">
+        if (!!window.SharedWorker) {
+            const container = document.getElementById('container');
+            const add = document.getElementById('add');
+            
+            const myWorker = new SharedWorker('./sharedWorker.js');
+            
+            myWorker.port.start();
+
+            myWorker.port.addEventListener('message', msg => {
+                container.innerText = msg.data;
+            });
+
+            add.addEventListener('click', () => {
+                myWorker.port.postMessage('add');
+            });
+        }
+    </script>
+</html>
