@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Web Workers</title>
+  </head>
+  <body>
+    <button onclick="startWorker()">开启 worker 线程</button>
+    <button onclick="stopWorker()">关闭 worker 线程</button>
+    <script>
+      var myWorker;
+      function startWorker() {
+        // 1 创建 worker
+        myWorker = new Worker("./worker.js");
+
+        // 2 向 worker 线程发送消息
+        myWorker.postMessage("主线程向 worker 线程发送消息");
+
+        // 3 接受 worker 线程发送的消息
+        myWorker.addEventListener("message", (e) => {
+          console.log("主线程收到的 worker 线程发来的数据:", e.data);
+        });
+
+        // 这种写法也可以 接收消息
+        // myWorker.onmessage = e => {
+        //    console.log(e.data);
+        // };
+
+        // 4 监听错误
+        myWorker.addEventListener("error", (err) => {
+          console.log(err.message); // 当worker内部出现错误时触发
+        });
+        myWorker.addEventListener("messageerror", (err) => {
+          console.log(err.message); // 当 message 事件接收到无法被反序列化的参数时触发
+
+        });
+      }
+
+      // 5 在主线程中关闭 worker 线程
+      function stopWorker() {
+        myWorker.terminate();
+        console.log("关闭 worker 线程");
+        myWorker = undefined;
+      }
+    </script>
+  </body>
+</html>
