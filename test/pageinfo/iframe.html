@@ -27,6 +27,13 @@
             videoContainer.removeChild(videoContainer.firstChild);
         }
 
+        function modVideo() {
+            var videos = document.getElementsByTagName('video');
+            for(var i = 0; i < videos.length; i++) {
+                videos[i].setAttribute("src", "https://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4");
+            }
+        }
+
         function createImg() {
             var imgContainer = document.getElementById('imgContainer');
             var v = document.createElement("IMG");
@@ -53,6 +60,7 @@
         </div>
         <button onclick="createVideo()">新增视频</button>
         <button onclick="delVideo()">删除视频</button>
+        <button onclick="modVideo()">修改视频地址</button>
     </div>
     
     <h3>2.图片信息测试</h3>
