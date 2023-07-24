@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="PageInfo;测试">
+    <title>PageInfo测试</title>
+    <style>
+        div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>1.基础信息测试</h3>
+    <p>包含mainFrame中的title、meta信息</p>
+    <h3>2.资源信息信息测试</h3>
+    <div>
+        <p>包含所有frame中video、audio、a、object、embed标签信息</p>
+        <video src="https://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4" style="width: 100; height: 100;" controls></video>
+        <br>
+        <audio src="https://res.imtt.qq.com/qqbrowser_x5/zhengyuli/file/cunzai.mp3" controls></audio>
+        <br>
+        <a href="https://res.imtt.qq.com/qqbrowser_x5/zhengyuli/file/cunzai.mp3">mp3</a>
+        <br>
+        <embed type="video/webm" src="https://res.imtt.qq.com/qqbrowser_x5/yongling/video/movie/movie.mp4" width="400" height="300"></embed>
+        <br>
+        <a href="https://xw.qq.com">手机腾讯网</a>
+    </div>
+    
+    <h3>3.图片信息测试</h3>
+    <p>包含所有frame中img标签信息</p>
+    <img src="https://x5.tencent.com/img/pic_veido_cover_1.jpg" width="100%" height="50"></img>
+    <br>
+    <img src="https://x5.tencent.com/img/pic_veido_cover_1.jpg" width="100%" height="50"></img>
+
+    <h3>4.Iframe 嵌套</h3>
+    <iframe src="./iframe.html" width="100%" height="300"></iframe>
+</body>
+</html>
