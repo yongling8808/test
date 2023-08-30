@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<script>
+      var index = 0;
+      addEventListener("orientationchange", (event) => {
+        var display = document.getElementById("orientationchange")
+        index += 1
+        display.innerText = index + ". " + window.orientation
+      });
+
+      function getOrientation() {
+        var display = document.getElementById("orientation")
+        display.innerText = window.orientation;
+      }
+		</script>
+	</head>
+	<body>
+    <h1>orientation test!</h1>
+    <div>
+      <h5>1.orientationchange</h5>
+      <p id="orientationchange"></p>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h5>2.window.orientation</h5>
+      <button onclick="getOrientation()">获取orientation</button>
+      <p id="orientation"></p>
+    </div>
+
+	</body>
+</html>
