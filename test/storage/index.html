@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./util.js"></script>
+  </head>
+  <body>
+    <button id="btn">用户授权</button>
+
+    <h1>浏览器存储信息</h1>
+    <h1 id="diskInfo"></h1>
+    <hr />
+    <h1>当前的存储模式是:</h1>
+    <h1 id="persistInfo"></h1>
+
+    <script>
+      // 检查浏览器的存储模式.
+      function getPersisted() {
+        checkPersisted().then(
+          persisted => {
+            document.querySelector('#persistInfo').innerHTML = persisted
+              ? '持久'
+              : '临时';
+          },
+          error => {
+            document.querySelector('#persistInfo').innerHTML = error;
+          }
+        );
+      }
+
+      // 申请持久化存储权限.
+      function applyPersist() {
+        grantPersist().then(
+          result => {
+            getPersisted();
+          },
+          error => {
+            document.querySelector('#persistInfo').innerHTML = error;
+          }
+        );
+      }
+
+      // 获取可使用磁盘空间和已使用的空间的信息
+      function checkStorageSpace() {
+        estimateSpace().then(
+          data => {
+            const { total, usage } = data;
+
+            document.querySelector('#diskInfo').innerHTML = `总大小: ${(
+              total / 1024
+            ).toFixed(4)}GB, 已使用${(usage / 1024).toFixed(4)}GB`;
+          },
+          error => {
+            document.querySelector('#diskInfo').innerHTML = error;
+          }
+        );
+      }
+
+      function init() {
+        checkStorageSpace();
+        getPersisted();
+
+        document.querySelector('#btn').onclick = function() {
+          applyPersist();
+        };
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>
