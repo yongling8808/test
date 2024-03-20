@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>touch test</title>
+</head>
+
+<body>
+    <h3>drag or press the image</h3>
+    <image id="pic1"  src='../sw/sw_postmessage/snowTroopers.jpg' style="width: 200px; height: 200px;"></image>
+    <p id="statu1"></p>
+
+
+    <script>
+        window.onload = function () {
+            var pic1 = document.getElementById('pic1');
+            var statu1 = document.getElementById('statu1');
+
+            pic1.addEventListener('touchstart', function (evt) {
+                console.log("touch start");
+                statu1.innerHTML="touch start"
+            })
+
+            pic1.addEventListener('touchmove', function (evt) {
+                console.log("touch move");
+                statu1.innerHTML="touch move"
+            })
+
+            pic1.addEventListener('touchend', function (evt) {
+                console.log("touch end");
+                statu1.innerHTML="touch end"
+            })
+
+            pic1.addEventListener('touchcancel', function (evt) {
+                console.log("touch cancel");
+                statu1.innerHTML="touch cancel"
+            })
+
+        }
+    </script>
+</body>
+
+</html>
