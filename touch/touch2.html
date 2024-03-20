@@ -8,32 +8,31 @@
 </head>
 
 <body>
-    <h3>drag or press the image</h3>
-    <image id="pic1"  src='../sw/sw_postmessage/snowTroopers.jpg' style="width: 200px; height: 200px;"></image>
+    <h3 id="text1">drag or press the image</h3>
     <p id="statu1"></p>
 
 
     <script>
         window.onload = function () {
-            var pic1 = document.getElementById('pic1');
+            var text1 = document.getElementById('text1');
             var statu1 = document.getElementById('statu1');
 
-            pic1.addEventListener('touchstart', function (evt) {
+            text1.addEventListener('touchstart', function (evt) {
                 console.log("touch start");
                 statu1.innerHTML="touch start"
             })
 
-            pic1.addEventListener('touchmove', function (evt) {
+            text1.addEventListener('touchmove', function (evt) {
                 console.log("touch move");
                 statu1.innerHTML="touch move"
             })
 
-            pic1.addEventListener('touchend', function (evt) {
+            text1.addEventListener('touchend', function (evt) {
                 console.log("touch end");
                 statu1.innerHTML="touch end"
             })
 
-            pic1.addEventListener('touchcancel', function (evt) {
+            text1.addEventListener('touchcancel', function (evt) {
                 console.log("touch cancel");
                 statu1.innerHTML="touch cancel"
             })
