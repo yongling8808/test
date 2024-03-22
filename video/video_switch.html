@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video switch</title>
+</head>
+
+<body>
+    <div id="videoContainer"></div>
+    <div class="container" style="position: absolute; top: 200px;">
+        <button id="previous" onclick="previous()">上一个</button>
+        <button id="next" onclick="next()">下一个</button>
+        <h4 id="id">id:0</h4>
+    </div>
+    
+
+    <script>
+        var video_srcs= ["https://v3-web.douyinvod.com/50f680f463656daade2b6d0ff13b950e/65fd84d0/video/tos/cn/tos-cn-ve-15/oYktIgDnlBIER9D8Dnr98AQsAAZwb9Bge9Ifnq/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=543&bt=543&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXtfEO6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=OWZpZjlkNjRkMzdkOzhpZEBpMztsbTQ6ZnR3cTMzNGkzM0AuLy40MmA0Xi8xXi1eLTZiYSNtMG0ycjRnam9gLS1kLTBzcw%3D%3D&btag=e00030000&cquery=100a&dy_q=1711102325&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20240322181204B58A2815C06B3B12FCE1"
+                        ,"https://v3-web.douyinvod.com/6950634ee35f7d365292b786f41ba903/65fd83c5/video/tos/cn/tos-cn-ve-15/ocw8bAne29PBf87ZL3jLngaBAQyyCPxIGrBXDe/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=847&bt=847&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXtfEO6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=Zjo8ZmZoNmg6NGY5ZzQ5O0BpamtzdjM6ZmxxcTMzNGkzM0AtLi40MTViXjYxM19fMC9fYSNxcnJicjRvZ3BgLS1kLWFzcw%3D%3D&btag=e00018000&cquery=100a&dy_q=1711102325&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20240322181204B58A2815C06B3B12FCE1"
+                        ,"https://v3-web.douyinvod.com/8da29ddbabcc5ff550d08c87a457623b/65fd83b1/video/tos/cn/tos-cn-ve-15/oAt9IAAHmPzDTB42G1BuETiYgQfOAlAzeKzC1h/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=1186&bt=1186&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXtfEO6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=aDNmaWkzZDQ3OjlpZjU0M0BpMzk7eGk6ZnM5cTMzNGkzM0AtMy0wNDMxNV4xMjAyLTNhYSNnaDEwcjRvLW9gLS1kLS9zcw%3D%3D&btag=e00008000&cquery=100a&dy_q=1711102325&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20240322181204B58A2815C06B3B12FCE1"
+                        ,"https://v26-web.douyinvod.com/3af6b99304241b40c1b4abffdb2a17f4/65fd8433/video/tos/cn/tos-cn-ve-15/o0fApvnseChV9c1mh9E6ABkAzXtQICgbglW79D/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=575&bt=575&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXtYZO6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=Z2c7aDg3aTY1M2VlNDlkZkBpamp1eWU6Zm9wcTMzNGkzM0A0LjEyNWEtXmIxYmEzMC8tYSNyMWJwcjRfaG5gLS1kLS9zcw%3D%3D&btag=e00010000&cquery=100a&dy_q=1711102449&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20240322181408F13E83CCD755130FAE0F"
+                        ,"https://v3-web.douyinvod.com/e655142cac4c1f20b1c04fd28f11c6a4/65fd84ac/video/tos/cn/tos-cn-ve-15/oAniKC3JIBl8sQDyCb9fAwMAJhNsXg7lggADel/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=1035&bt=1035&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXt5_O6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=aWdnM2c5ZTs6MzRkNGk0ZkBpM3dzNzk6ZmxxcTMzNGkzM0BfNTMwYGJiXy8xXzVjMDQuYSNvMmo1cjRfZGxgLS1kLS9zcw%3D%3D&btag=e00008000&cquery=100a&dy_q=1711102576&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=20240322181615B3C083708C9D1B107443"
+                        ,"https://v3-web.douyinvod.com/ea03281f17158dd4607ad201bb964097/65fd8818/video/tos/cn/tos-cn-ve-15c001-alinc2/okQ7RLzB4CfnaA7aUHIAdeDBPfnbRTiDNbMLAE/?a=6383&ch=5&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=848&bt=848&cs=0&ds=6&ft=LjhJEL998x~nu4emD0P5H4eaciDXtyVO6_QEeMqRKcLD1Inz&mime_type=video_mp4&qs=12&rc=ZTo5ZmloZDlmMzo2NWkzOkBpMztpZWQ6Zmx5cDMzNGkzM0A2NDMvMTUzNmIxNl4vNjIvYSNnZzUwcjRvNGdgLS1kLS9zcw%3D%3D&btag=e00038000&cquery=100a&dy_q=1711102654&feature_id=46a7bb47b4fd1280f3d3825bf2b29388&l=202403221817339A05088A7924050EF67D"]
+
+        var index = 0
+        var videoContainer = document.getElementById('videoContainer');
+        var v = document.createElement("VIDEO");
+        v.setAttribute("width", "400");
+        v.setAttribute("height", "600");
+        v.setAttribute("controls", "controls");
+        v.setAttribute("autoplay", "true")
+        v.setAttribute("src", video_srcs[index])
+        videoContainer.appendChild(v)
+
+        function previous() {
+            index = index - 1
+            if(index < 0) {
+                index = video_srcs.length - 1
+            }
+            v.setAttribute("src", video_srcs[index])
+            v.play()
+            document.getElementById("id").innerHTML="id:"+index
+        }
+
+        function next() {
+            index = index + 1
+            if(index == video_srcs.length) {
+                index = 0
+            }
+            v.setAttribute("src", video_srcs[index])
+            v.play()
+            document.getElementById("id").innerHTML="id:"+index
+        }
+    </script>
+</body>
+
+</html>
