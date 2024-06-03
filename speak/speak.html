@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text to Speech Example</title>
+</head>
+<body>
+  <textarea id="text" rows="10" cols="50">
+    这里是一些文本，将会被转换为语音。
+  </textarea>
+  <button onclick="speak()">播报文本</button>
+ 
+  <script>
+    function speak() {
+      var text = document.getElementById('text').value;
+      var msg = new SpeechSynthesisUtterance();
+      msg.text = text;
+      window.speechSynthesis.speak(msg);
+    }
+  </script>
+</body>
+</html>
