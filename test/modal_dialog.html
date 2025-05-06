@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head> 
+    <body>
+        <button onclick="myAlertFunc()">alert</button>
+        <br>
+        <br>
+        <button onClick="myConfirmFunc()">confirm</button>
+        <br>
+        <br>
+        <button onclick="myPromptFunc()">prompt</button>
+        <br>
+        <br>
+        <button onclick="window.location.href='gnome-control-center://network'">打开网络设置</button>
+        <script>
+            function myAlertFunc() {
+               alert("Hello world!");
+            }
+
+            function myConfirmFunc() {
+                var xuanze=confirm("点击确认或者取消！");
+                var text="";
+                if(xuanze==true){
+                    text="你选择了“确定”！";
+                }
+                else{
+                    text="你选择了“取消”！";
+                }
+            }
+
+            function myPromptFunc(){
+                var person=prompt("请输入你的名字","Harry Potter");
+            }
+        </script>
+    </body>
+</html>
