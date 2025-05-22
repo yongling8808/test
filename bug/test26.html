@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <script>
+        function makeAjaxRequest(url, method = 'GET', data = null) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                
+                xhr.open(method, url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    try {
+                    const response = xhr.responseText
+                    resolve(response);
+                    } catch (e) {
+                    reject(new Error('Failed to parse JSON response'));
+                    }
+                } else {
+                    reject(new Error(`Request failed with status ${xhr.status}`));
+                }
+                };
+
+                xhr.onerror = function() {
+                reject(new Error('Network error occurred'));
+                };
+
+                xhr.send(data ? JSON.stringify(data) : null);
+            });
+        }
+
+        window.addEventListener("onpageshow", function() {
+            makeAjaxRequest('https://yongling8808.github.io/test/bug/test25.html')
+            .then(response => console.log('Success:', response))
+            .catch(error => console.log('Error:', error));
+        })
+    </script>
+</head>
+<body>
+    <h2>ajax请求测试</h2>
+</body>
+</html>
